@@ -1,10 +1,10 @@
-name: SlimefunAddon
-version: ${project.version}
-author: CHANGEME
-description: A generic Slimefun4-Addon
-website: https://github.com/TheBusyBiscuit/Slimefun4-Addon
+name: HALsAddon
+version: $1.0.0
+author: HAL989
+description: Content galore with this new addon
+website: https://github.com/Gavin296/slimefun-addon-test
 
-main: me.CHANGEME.slimefunaddon.ExampleAddon
+main: me.hal989.halsaddon.HALsAddon
 depend: [Slimefun]
 
 api-version: 1.14

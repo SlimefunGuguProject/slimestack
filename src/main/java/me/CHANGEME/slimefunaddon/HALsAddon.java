@@ -14,7 +14,7 @@ import me.mrCookieSlime.Slimefun.bstats.bukkit.Metrics;
 import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 
-public class ExampleAddon extends JavaPlugin implements SlimefunAddon {
+public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 	
 	@Override
 	public void onEnable() {
