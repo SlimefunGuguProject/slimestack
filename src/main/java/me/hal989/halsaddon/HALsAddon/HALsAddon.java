@@ -1,5 +1,6 @@
 package me.hal989.halsaddon.HALsAddon;
 
+import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
