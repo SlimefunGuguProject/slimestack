@@ -2,7 +2,7 @@
   
   <modelVersion>4.0.0</modelVersion>
   <groupId>me.hal989</groupId>
-  <artifactId>SlimefunAddon</artifactId>
+  <artifactId>HALsAddon</artifactId>
   <version>1.0.0</version>
   
   <properties>
@@ -72,7 +72,7 @@
   	<dependency>
   		<groupId>com.github.TheBusyBiscuit</groupId>
   		<artifactId>Slimefun4</artifactId>
-  		<version>master-SNAPSHOT</version>
+  		<version>73401bae08</version>
   		<scope>provided</scope>
   		<exclusions>
   			<exclusion>
