@@ -43,20 +43,28 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		// This class has many constructors, it is very important that you give each item a unique id.
 
 
-		SlimefunItemStack itemStack = new SlimefunItemStack("ENDER_STAFF", Material.STICK, "&6Elemental Staff - &5&oEnder", "", "&7Element: &5&oEnder","","&eRight Click &7to teleport.");
-		itemStack.addUnsafeEnchantment(Enchantment.DIG_SPEED, 1);
+		SlimefunItemStack end_staff = new SlimefunItemStack("ENDER_STAFF", Material.STICK, "&6Elemental Staff - &5&oEnder", "", "&7Element: &5&oEnder","","&eRight Click &7to teleport.");
+		SlimefunItemStack levitation_bow = new SlimefunItemStack("LEVITATION_BOW", Material.BOW, "&dShulker Bow", "", "&7Element: &5&oEnder","","&fAny enemies hit by this bow are launched into the air!");
+		end_staff.addUnsafeEnchantment(Enchantment.DIG_SPEED, 1);
 
 
 
-// A 3x3 shape representing our recipe
-		ItemStack[] recipe = {
+// Recipes
+		ItemStack[] enderStaff_recipe = {
 				null, null, SlimefunItems.RUNE_ENDER,
 				null, SlimefunItems.STAFF_ELEMENTAL, null,
 				SlimefunItems.STAFF_ELEMENTAL, null, null
 		};
 
-		EnderStaff endStaff = new EnderStaff(category, itemStack, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
+		EnderStaff endStaff = new EnderStaff(category, end_staff, RecipeType.MAGIC_WORKBENCH, enderStaff_recipe);
 	endStaff.register(this);
+		ItemStack[] shulkerBow_recipe = {
+				null, SlimefunItems.STAFF_ELEMENTAL, new ItemStack(Material.CHORUS_FRUIT),
+				end_staff, null, new ItemStack(Material.CHORUS_FRUIT),
+				null, SlimefunItems.STAFF_ELEMENTAL, new ItemStack(Material.CHORUS_FRUIT)
+		};
+		ShulkerBow shulker_bow = new ShulkerBow(levitation_bow,shulkerBow_recipe);
+		shulker_bow.register(this);
 // Our item is now registered
 
 	}
