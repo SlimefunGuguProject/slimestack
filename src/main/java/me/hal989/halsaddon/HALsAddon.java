@@ -4,13 +4,13 @@ import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.bstats.bukkit.Metrics;
 import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 public class HALsAddon extends JavaPlugin implements SlimefunAddon {
@@ -34,8 +34,8 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 
 		// Create a new Category
 		// This Category will use this ItemStack
-		NamespacedKey categoryId = new NamespacedKey(this, "cool_category");
-		CustomItem categoryItem = new CustomItem(Material.EMERALD, "&4Our very cool Category");
+		NamespacedKey categoryId = new NamespacedKey(this, "ender_items");
+		CustomItem categoryItem = new CustomItem(Material.END_STONE, "&5Addon Jam: The End");
 
 		Category category = new Category(categoryId, categoryItem);
 
@@ -44,19 +44,19 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 
 
 		SlimefunItemStack itemStack = new SlimefunItemStack("ENDER_STAFF", Material.STICK, "&6Elemental Staff - &5&oEnder", "", "&7Element: &5&oEnder","","&eRight Click &7to teleport.");
+		itemStack.addUnsafeEnchantment(Enchantment.DIG_SPEED, 1);
 
 
 
 // A 3x3 shape representing our recipe
 		ItemStack[] recipe = {
-				new ItemStack(Material.DIAMOND), null, new ItemStack(Material.DIAMOND),
-				null, SlimefunItems.CARBONADO, null,
-				new ItemStack(Material.DIAMOND), null, new ItemStack(Material.DIAMOND)
+				null, null, SlimefunItems.RUNE_ENDER,
+				null, SlimefunItems.STAFF_ELEMENTAL, null,
+				SlimefunItems.STAFF_ELEMENTAL, null, null
 		};
 
-		SlimefunItem sfItem = new SlimefunItem(category, itemStack, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
-		sfItem.register(this);
-
+		EnderStaff endStaff = new EnderStaff(category, itemStack, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
+	endStaff.register(this);
 // Our item is now registered
 
 	}
