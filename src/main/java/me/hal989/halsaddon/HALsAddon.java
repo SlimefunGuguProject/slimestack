@@ -13,48 +13,52 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
-
 public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 	
 	@Override
 	public void onEnable() {
 		// Read something from your config.yml
 		Config cfg = new Config(this);
-		
+
 		if (cfg.getBoolean("options.auto-update")) {
 			// You could start an Auto-Updater for example
 		}
-		
+
 		// Slimefun4 also already comes with a bundled version of bStats
 		// You can use bStats to collect usage data about your plugin
 		// More info: https://bstats.org/getting-started
 		// Set bStatsId to the id of your plugin
 		int bStatsId = -1;
 		new Metrics(this, bStatsId);
-		
+
+
 		// Create a new Category
 		// This Category will use this ItemStack
 		NamespacedKey categoryId = new NamespacedKey(this, "cool_category");
 		CustomItem categoryItem = new CustomItem(Material.EMERALD, "&4Our very cool Category");
 
 		Category category = new Category(categoryId, categoryItem);
-		
+
 		// Create a new Slimefun ItemStack
 		// This class has many constructors, it is very important that you give each item a unique id.
 
 
-		SlimefunItemStack itemStack = new SlimefunItemStack("MY_ADDON_ITEM", Material.EMERALD, "&aPretty cool Emerald", "", "&7This is awesome");
+		SlimefunItemStack itemStack = new SlimefunItemStack("ENDER_STAFF", Material.STICK, "&6Elemental Staff - &5&oEnder", "", "&7Element: &5&oEnder","","&eRight Click &7to teleport.");
+
+
 
 // A 3x3 shape representing our recipe
 		ItemStack[] recipe = {
-				new ItemStack(Material.DIAMOND),    null,                               new ItemStack(Material.DIAMOND),
-				null,                               SlimefunItems.CARBONADO,            null,
-				new ItemStack(Material.DIAMOND),    null,                               new ItemStack(Material.DIAMOND)
+				new ItemStack(Material.DIAMOND), null, new ItemStack(Material.DIAMOND),
+				null, SlimefunItems.CARBONADO, null,
+				new ItemStack(Material.DIAMOND), null, new ItemStack(Material.DIAMOND)
 		};
 
 		SlimefunItem sfItem = new SlimefunItem(category, itemStack, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
 		sfItem.register(this);
+
 // Our item is now registered
+
 	}
 	
 	@Override
@@ -74,3 +78,4 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 	}
 
 }
+
