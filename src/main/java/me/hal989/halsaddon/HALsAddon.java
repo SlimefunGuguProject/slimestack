@@ -70,7 +70,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ARTHROPODS,2);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_UNDEAD,2);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.FIRE_ASPECT,4);
-		Blistering_Blade.addUnsafeEnchantment(Enchantment.SWEEPING_EDGE,3);
+		Equal_Blade.addUnsafeEnchantment(Enchantment.SWEEPING_EDGE,3);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.DURABILITY,10); //Equilibrium
 		SlimefunItemStack Trapped_ShulkerBox = new SlimefunItemStack("TRAPPED_SHULKERBOX", Material.SHULKER_BOX, "&fTrapped Shulker Box", "","&fAnyone who tries to open the box will","&fget levitation for 5 seconds.");
 		SlimefunItemStack Levitation_Tome = new SlimefunItemStack("LEVITATION_TOME", Material.KNOWLEDGE_BOOK, "&fSpell Tome (&bAir&f)", "","&eRight Click &f- Gain a brief period of levitation");
