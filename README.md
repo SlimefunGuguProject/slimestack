@@ -4,8 +4,4 @@ This addon will spice up combat by adding a variety of end-themed weapons, and o
 
 (Made by HAL989)
 
-Current features:
-3 swords
-1 Bow
-1 Staff
-5 additional material items
+Currently features 10+ items
