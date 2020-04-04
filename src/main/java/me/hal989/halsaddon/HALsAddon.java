@@ -1,6 +1,8 @@
 package me.hal989.halsaddon;
 
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
+import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactivity;
+import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Objects.Category;
@@ -48,11 +50,27 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		SlimefunItemStack end_staff = new SlimefunItemStack("ENDER_STAFF", Material.STICK, "&6Elemental Staff - &5&oEnder", "", "&7Element: &5&oEnder","","&eRight Click &7to teleport.");
 		SlimefunItemStack levitation_bow = new SlimefunItemStack("LEVITATION_BOW", Material.BOW, "&dShulker Bow", "","&fAny enemies hit by arrows fired by this bow are launched into the air!");
 			end_staff.addUnsafeEnchantment(Enchantment.CHANNELING, 1);
-		SlimefunItemStack FrozenBar_1 = new SlimefunItemStack("FROZEN_BAR_1", Material.NETHER_BRICK, "&5Frozen Bar &d(33%)", "");
+		SlimefunItemStack FrozenBar_1 = new SlimefunItemStack("FROZEN_BAR_1", Material.IRON_INGOT, "&5Frozen Bar &d(33%)", "");
 		SlimefunItemStack EndFragment = new SlimefunItemStack("END_FRAGMENT", Material.IRON_NUGGET, "&dEnder Fragment", "");
 		SlimefunItemStack Compressed_EndFragment = new SlimefunItemStack("COMPRESSED_END_FRAGMENT", Material.IRON_NUGGET, "&dCompressed Ender Fragment", "");
-		SlimefunItemStack FrozenBar_2 = new SlimefunItemStack("FROZEN_BAR_2", Material.NETHER_BRICK, "&5Frozen Bar &d(66%)", "");
-		SlimefunItemStack FrozenBar_Full = new SlimefunItemStack("FROZEN_BAR_FULL", Material.NETHER_BRICK, "&5Frozen Bar", "");
+		SlimefunItemStack FrozenBar_2 = new SlimefunItemStack("FROZEN_BAR_2", Material.IRON_INGOT, "&5Frozen Bar &d(66%)", "");
+		SlimefunItemStack FrozenBar_Full = new SlimefunItemStack("FROZEN_BAR_FULL", Material.IRON_INGOT, "&5Frozen Bar", "");
+		SlimefunItemStack Blistering_Blade = new SlimefunItemStack("BLISTERING_BLADE", Material.GOLDEN_SWORD, "&6Blistering Blade", "", LoreBuilder.radioactive(Radioactivity.VERY_DEADLY), LoreBuilder.HAZMAT_SUIT_REQUIRED);
+		Blistering_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ALL,9);
+		Blistering_Blade.addUnsafeEnchantment(Enchantment.FIRE_ASPECT,4);
+		Blistering_Blade.addUnsafeEnchantment(Enchantment.DURABILITY,10); //Blistering Blade
+		SlimefunItemStack Freezing_Blade = new SlimefunItemStack("FREEZING_BLADE", Material.DIAMOND_SWORD, "&bFreezing Blade", "");
+		Freezing_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ALL,5);
+		Freezing_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ARTHROPODS,2);
+		Freezing_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_UNDEAD,2);
+		Freezing_Blade.addUnsafeEnchantment(Enchantment.DURABILITY,5); //Freezing Blade
+		SlimefunItemStack Equal_Blade = new SlimefunItemStack("EQUILIBRIUM", Material.IRON_SWORD, "&9Equilibrium", "","&fFew have obtained this sword, even fewer have" ,"&fthe capabilities to wield it.","",LoreBuilder.radioactive(Radioactivity.VERY_DEADLY), LoreBuilder.HAZMAT_SUIT_REQUIRED);
+		Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ALL,7);
+		Equal_Blade.addUnsafeEnchantment(Enchantment.FIRE_ASPECT,4);
+		Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ARTHROPODS,2);
+		Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_UNDEAD,2);
+		Equal_Blade.addUnsafeEnchantment(Enchantment.DURABILITY,10); //Equilibrium
+
 
 
 
@@ -109,7 +127,28 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 				null, null, null,
 		};
 		SlimefunItem CompressedEndFragment_Item = new SlimefunItem(category, Compressed_EndFragment, RecipeType.COMPRESSOR, CompressedEndFragment_recipe);
-
+		CompressedEndFragment_Item.register(this); //compressed end fragment
+		ItemStack[] Blistering_Blade_recipe = {
+				null, SlimefunItems.BLISTERING_INGOT_3, null,
+				null, SlimefunItems.BLISTERING_INGOT_3, null,
+				null, new ItemStack(Material.STICK), null,
+		};
+		RadioactiveWeapon Blistering_Blade_item = new RadioactiveWeapon(category, Blistering_Blade, RecipeType.ENHANCED_CRAFTING_TABLE, Blistering_Blade_recipe);
+		Blistering_Blade_item.register(this); //Blistering Blade
+		ItemStack[] Freezing_Blade_recipe = {
+				null, FrozenBar_Full, null,
+				null, FrozenBar_Full, null,
+				null, new ItemStack(Material.STICK), null,
+		};
+		SlimefunItem Freezing_Blade_item = new SlimefunItem(category, Freezing_Blade, RecipeType.ENHANCED_CRAFTING_TABLE, Freezing_Blade_recipe);
+		Freezing_Blade_item.register(this); //Freezing Blade
+		ItemStack[] Equilibrium_Blade_recipe = {
+				null, Freezing_Blade, null,
+				null, Blistering_Blade, null,
+				null, new ItemStack(Material.STICK), null,
+		};
+		RadioactiveWeapon Equilibrium_Blade_item = new RadioactiveWeapon(category, Equal_Blade, RecipeType.ENHANCED_CRAFTING_TABLE, Equilibrium_Blade_recipe);
+		Equilibrium_Blade_item.register(this); //Equilibrium
 		//Research
 		NamespacedKey ender_fragments_research_id = new NamespacedKey(this, "ender_fragments_r");
 		Research ender_fragments_research = new Research(ender_fragments_research_id, 425989, "Ender Fragments", 13);
@@ -117,9 +156,9 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		ender_fragments_research.register();
 
 		NamespacedKey frozen_bars_research_id = new NamespacedKey(this, "frozen_bars_research");
-		Research frozen_bars_research = new Research(ender_fragments_research_id, 425990, "Frozen Bars", 40);
-		ender_fragments_research.addItems(FrozenBar1_item,FrozenBar2_item,FrozenBar_Full_item);
-		ender_fragments_research.register();
+		Research frozen_bars_research = new Research(frozen_bars_research_id, 425990, "Frozen Bars", 40);
+		frozen_bars_research.addItems(FrozenBar1_item,FrozenBar2_item,FrozenBar_Full_item);
+		frozen_bars_research.register();
 
 		NamespacedKey ShulkerBow_research_id = new NamespacedKey(this, "shulkerbow_research");
 		Research ShulkerBow_research = new Research(ShulkerBow_research_id, 425991, "Shulker Bow", 20);
@@ -130,6 +169,11 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		Research EnderStaff_research = new Research(EndStaff_research_id, 425992, "Ender Staff", 21);
 		EnderStaff_research.addItems(endStaff);
 		EnderStaff_research.register();
+
+		NamespacedKey Hot_and_cold_research_id = new NamespacedKey(this, "hot_and_cold_research");
+		Research Hot_cold_research = new Research(Hot_and_cold_research_id, 425993, "Weaponizing Extreme Temperatures", 35);
+		Hot_cold_research.addItems(Equilibrium_Blade_item,Freezing_Blade_item,Blistering_Blade_item);
+		Hot_cold_research.register();
 	}
 
 
