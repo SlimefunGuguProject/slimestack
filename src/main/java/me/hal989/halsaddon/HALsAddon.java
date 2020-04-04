@@ -70,6 +70,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ARTHROPODS,2);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_UNDEAD,2);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.DURABILITY,10); //Equilibrium
+		SlimefunItemStack Trapped_ShulkerBox = new SlimefunItemStack("TRAPPED_SHULKERBOX", Material.SHULKER_BOX, "&fTrapped Shulker Box", "","&fAnyone who tries to open the box will","get levitation for 5 seconds.");
 
 
 
@@ -82,6 +83,12 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 				SlimefunItems.STAFF_ELEMENTAL, null, null
 		};
 
+		ItemStack[] Trapped_ShulkerBox_recipe = {
+				null, null, null,
+				null, new ItemStack(Material.SHULKER_BOX), new ItemStack(Material.TRIPWIRE_HOOK),
+				null, null, null
+		};
+
 		EnderStaff endStaff = new EnderStaff(category, end_staff, RecipeType.MAGIC_WORKBENCH, enderStaff_recipe);
 	endStaff.register(this);
 		ItemStack[] shulkerBow_recipe = {
@@ -91,6 +98,8 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		};
 		ShulkerBow shulker_bow = new ShulkerBow(levitation_bow,shulkerBow_recipe); //Shulker Bow
 		shulker_bow.register(this);
+		TrappedShulker Trapped_ShulkerBox_item = new TrappedShulker(category, Trapped_ShulkerBox, RecipeType.ENHANCED_CRAFTING_TABLE, Trapped_ShulkerBox_recipe); //Shulker Bow
+		Trapped_ShulkerBox_item.register(this);
 // End Bars & Fragments
 
 		ItemStack[] EndFragment_recipe = {
@@ -105,6 +114,13 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 				null, null, null,
 				null, null, null
 		};
+		ItemStack[] CompressedEndFragment_recipe = {
+				EndFragment, EndFragment, null,
+				EndFragment, EndFragment, null,
+				null, null, null,
+		};
+		SlimefunItem CompressedEndFragment_Item = new SlimefunItem(category, Compressed_EndFragment, RecipeType.COMPRESSOR, CompressedEndFragment_recipe);
+		CompressedEndFragment_Item.register(this); //compressed end fragment
 		SlimefunItem FrozenBar1_item = new SlimefunItem(category, FrozenBar_1, RecipeType.PRESSURE_CHAMBER, FrozenBar1_recipe);
 		FrozenBar1_item.register(this); //Frozen Bar (33%)
 		ItemStack[] FrozenBar2_recipe = {
@@ -121,13 +137,6 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		};
 		SlimefunItem FrozenBar_Full_item = new SlimefunItem(category, FrozenBar_Full, RecipeType.PRESSURE_CHAMBER, FrozenBar_Full_recipe);
 		FrozenBar_Full_item.register(this); //Frozen Bar (Full)
-		ItemStack[] CompressedEndFragment_recipe = {
-				EndFragment, EndFragment, null,
-				EndFragment, EndFragment, null,
-				null, null, null,
-		};
-		SlimefunItem CompressedEndFragment_Item = new SlimefunItem(category, Compressed_EndFragment, RecipeType.COMPRESSOR, CompressedEndFragment_recipe);
-		CompressedEndFragment_Item.register(this); //compressed end fragment
 		ItemStack[] Blistering_Blade_recipe = {
 				null, SlimefunItems.BLISTERING_INGOT_3, null,
 				null, SlimefunItems.BLISTERING_INGOT_3, null,

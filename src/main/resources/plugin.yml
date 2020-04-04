@@ -1,5 +1,5 @@
 name: HALsAddon
-version: ${project.versi}
+version: ${project.version}
 author: HAL989
 description: Content galore with this new addon
 website: https://github.com/Gavin296/slimefun-addon-test
