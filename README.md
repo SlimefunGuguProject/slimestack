@@ -1,20 +1,11 @@
-# Slimefun4 Addon
-This is an example Repository for a generic Slimefun4 Addon.
-In the top left is a button "Use this template", click this to create your own Addon for Slimefun4 using this basic template.
+# A slimefun4 Addon for the Addon Jam 2020 Contest
 
-## How to create your own addon.
-This is a template repository that you can use to create your own Slimefun4 Addon.<br>
-We have also written an extensive step-by-step tutorial which you can find here:<br>
-https://github.com/TheBusyBiscuit/Slimefun4/wiki/Developer-Guide
+This addon will spice up combat by adding a variety of end-themed weapons, and other combat tools!
 
-## Changing some important things
-Navigate to `src/main/java` and rename the package and the .java File to your liking.<br>
-Suggestion: "me.yourname.yourproject" (all lower case) and "ProjectName.java"<br>
-Example: "me.thebusybiscuit.cooladdon" and "CoolAddon.java"
+(Made by HAL989)
 
-Navigate to `src/main/resources/plugin.yml` and change the "author" and "main" attributes.
-You may also want to change the description to something meaningful.
-
-Navigate to `pom.xml` and change the group id to "me.%Your name%" and change the arficact id to the name of your Project.
-
-After that you are good to go, you can now start developing your own Addon for Slimefun4.
+Current features:
+3 swords
+1 Bow
+1 Staff
+5 additional material items
