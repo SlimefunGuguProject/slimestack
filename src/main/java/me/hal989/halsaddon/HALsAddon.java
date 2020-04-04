@@ -58,6 +58,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		SlimefunItemStack Blistering_Blade = new SlimefunItemStack("BLISTERING_BLADE", Material.GOLDEN_SWORD, "&6Blistering Blade", "", LoreBuilder.radioactive(Radioactivity.VERY_DEADLY), LoreBuilder.HAZMAT_SUIT_REQUIRED);
 		Blistering_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ALL,9);
 		Blistering_Blade.addUnsafeEnchantment(Enchantment.FIRE_ASPECT,4);
+		Blistering_Blade.addUnsafeEnchantment(Enchantment.SWEEPING_EDGE,3);
 		Blistering_Blade.addUnsafeEnchantment(Enchantment.DURABILITY,10); //Blistering Blade
 		SlimefunItemStack Freezing_Blade = new SlimefunItemStack("FREEZING_BLADE", Material.DIAMOND_SWORD, "&bFreezing Blade", "");
 		Freezing_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ALL,5);
@@ -66,12 +67,15 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		Freezing_Blade.addUnsafeEnchantment(Enchantment.DURABILITY,5); //Freezing Blade
 		SlimefunItemStack Equal_Blade = new SlimefunItemStack("EQUILIBRIUM", Material.IRON_SWORD, "&9Equilibrium", "","&fFew have obtained this sword, even fewer have" ,"&fthe capabilities to wield it.","",LoreBuilder.radioactive(Radioactivity.VERY_DEADLY), LoreBuilder.HAZMAT_SUIT_REQUIRED);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ALL,7);
-		Equal_Blade.addUnsafeEnchantment(Enchantment.FIRE_ASPECT,4);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ARTHROPODS,2);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_UNDEAD,2);
+		Equal_Blade.addUnsafeEnchantment(Enchantment.FIRE_ASPECT,4);
+		Blistering_Blade.addUnsafeEnchantment(Enchantment.SWEEPING_EDGE,3);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.DURABILITY,10); //Equilibrium
-		SlimefunItemStack Trapped_ShulkerBox = new SlimefunItemStack("TRAPPED_SHULKERBOX", Material.SHULKER_BOX, "&fTrapped Shulker Box", "","&fAnyone who tries to open the box will","get levitation for 5 seconds.");
-
+		SlimefunItemStack Trapped_ShulkerBox = new SlimefunItemStack("TRAPPED_SHULKERBOX", Material.SHULKER_BOX, "&fTrapped Shulker Box", "","&fAnyone who tries to open the box will","&fget levitation for 5 seconds.");
+		SlimefunItemStack Levitation_Tome = new SlimefunItemStack("LEVITATION_TOME", Material.KNOWLEDGE_BOOK, "&fSpell Tome (&bAir&f)", "","&eRight Click &f- Gain a brief period of levitation");
+		SlimefunItemStack Obsidian_Shield = new SlimefunItemStack("OBSIDIAN_SHIELD", Material.SHIELD, "&fObsidian Shield", "");
+		Obsidian_Shield.addUnsafeEnchantment(Enchantment.DURABILITY,5);
 
 
 
@@ -85,12 +89,28 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 
 		ItemStack[] Trapped_ShulkerBox_recipe = {
 				null, null, null,
-				null, new ItemStack(Material.SHULKER_BOX), new ItemStack(Material.TRIPWIRE_HOOK),
+				new ItemStack(Material.REDSTONE_BLOCK), new ItemStack(Material.SHULKER_BOX), new ItemStack(Material.TRIPWIRE_HOOK),
 				null, null, null
 		};
 
+		ItemStack[] Obsidian_Shield_recipe = {
+				new ItemStack(Material.OBSIDIAN), new ItemStack(Material.OBSIDIAN), new ItemStack(Material.OBSIDIAN),
+				new ItemStack(Material.OBSIDIAN), new ItemStack(Material.SHIELD), new ItemStack(Material.OBSIDIAN),
+				new ItemStack(Material.OBSIDIAN), new ItemStack(Material.OBSIDIAN), new ItemStack(Material.OBSIDIAN)
+		};
+
+		ItemStack[] Levitation_Tome_recipe = {
+				SlimefunItems.ENDER_LUMP_2, new ItemStack(Material.FEATHER), SlimefunItems.ENDER_LUMP_2,
+				new ItemStack(Material.FEATHER), SlimefunItems.MAGICAL_BOOK_COVER, new ItemStack(Material.FEATHER),
+				SlimefunItems.ENDER_LUMP_2, new ItemStack(Material.FEATHER), SlimefunItems.ENDER_LUMP_2
+		};
+		SlimefunItem Obsidian_Shield_item = new SlimefunItem(category, Obsidian_Shield, RecipeType.ENHANCED_CRAFTING_TABLE, Obsidian_Shield_recipe);
+		Obsidian_Shield_item.register(this);
+
 		EnderStaff endStaff = new EnderStaff(category, end_staff, RecipeType.MAGIC_WORKBENCH, enderStaff_recipe);
 	endStaff.register(this);
+		LevitationTome Levitation_Tome_item = new LevitationTome(category, Levitation_Tome, RecipeType.MAGIC_WORKBENCH, Levitation_Tome_recipe);
+		Levitation_Tome_item.register(this);
 		ItemStack[] shulkerBow_recipe = {
 				null, SlimefunItems.STAFF_ELEMENTAL, new ItemStack(Material.CHORUS_FRUIT),
 				end_staff, null, new ItemStack(Material.CHORUS_FRUIT),

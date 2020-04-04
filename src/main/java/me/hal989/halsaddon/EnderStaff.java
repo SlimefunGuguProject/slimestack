@@ -10,6 +10,7 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.inventory.ItemStack;
@@ -45,6 +46,7 @@ public class EnderStaff extends SlimefunItem {
                zposition *= -1; //same for z
            }
            p.teleport(new Location(p.getWorld(), p.getLocation().getX()+xposition, p.getLocation().getY(), p.getLocation().getZ()+zposition, p.getLocation().getYaw(), p.getLocation().getPitch()));
+           p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
        }
        else {
            SlimefunPlugin.getLocal().sendMessage(p, "messages.hungry", true); //hunger message
