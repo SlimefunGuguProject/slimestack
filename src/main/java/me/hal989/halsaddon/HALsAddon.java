@@ -73,7 +73,8 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		Equal_Blade.addUnsafeEnchantment(Enchantment.SWEEPING_EDGE,3);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.DURABILITY,10); //Equilibrium
 		SlimefunItemStack Trapped_ShulkerBox = new SlimefunItemStack("TRAPPED_SHULKERBOX", Material.SHULKER_BOX, "&fTrapped Shulker Box", "","&fAnyone who tries to open the box will","&fget levitation for 5 seconds.");
-		SlimefunItemStack Levitation_Tome = new SlimefunItemStack("LEVITATION_TOME", Material.KNOWLEDGE_BOOK, "&fSpell Tome (&bAir&f)", "","&eRight Click &f- Gain a brief period of levitation");
+		SlimefunItemStack Levitation_Tome = new SlimefunItemStack("LEVITATION_TOME", Material.KNOWLEDGE_BOOK, "&fSpell Tome (&bReverse Gravity&f)", "","&eRight Click &f- Gain a brief period of levitation");
+		SlimefunItemStack Ground_Tome = new SlimefunItemStack("GROUND_TOME", Material.KNOWLEDGE_BOOK, "&fSpell Tome (&8Intensify Gravity&f)", "","&eRight Click &f- Intensify gravity for all nearby entities");
 		SlimefunItemStack Obsidian_Shield = new SlimefunItemStack("OBSIDIAN_SHIELD", Material.SHIELD, "&fObsidian Shield", "");
 		Obsidian_Shield.addUnsafeEnchantment(Enchantment.DURABILITY,5);
 
@@ -104,6 +105,11 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 				new ItemStack(Material.FEATHER), SlimefunItems.MAGICAL_BOOK_COVER, new ItemStack(Material.FEATHER),
 				SlimefunItems.ENDER_LUMP_2, new ItemStack(Material.FEATHER), SlimefunItems.ENDER_LUMP_2
 		};
+		ItemStack[] Ground_Tome_recipe = {
+				SlimefunItems.ENDER_LUMP_2, new ItemStack(Material.ANVIL), SlimefunItems.ENDER_LUMP_2,
+				SlimefunItems.ENDER_LUMP_2, SlimefunItems.MAGICAL_BOOK_COVER, SlimefunItems.ENDER_LUMP_2,
+				SlimefunItems.ENDER_LUMP_2, null, SlimefunItems.ENDER_LUMP_2
+		};
 		SlimefunItem Obsidian_Shield_item = new SlimefunItem(category, Obsidian_Shield, RecipeType.ENHANCED_CRAFTING_TABLE, Obsidian_Shield_recipe);
 		Obsidian_Shield_item.register(this);
 
@@ -111,6 +117,8 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 	endStaff.register(this);
 		LevitationTome Levitation_Tome_item = new LevitationTome(category, Levitation_Tome, RecipeType.MAGIC_WORKBENCH, Levitation_Tome_recipe);
 		Levitation_Tome_item.register(this);
+		GroundTome Ground_Tome_item = new GroundTome(category, Ground_Tome, RecipeType.MAGIC_WORKBENCH, Ground_Tome_recipe);
+		Ground_Tome_item.register(this);
 		ItemStack[] shulkerBow_recipe = {
 				null, SlimefunItems.STAFF_ELEMENTAL, new ItemStack(Material.CHORUS_FRUIT),
 				end_staff, null, new ItemStack(Material.CHORUS_FRUIT),
@@ -177,6 +185,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 				null, new ItemStack(Material.STICK), null,
 		};
 		RadioactiveWeapon Equilibrium_Blade_item = new RadioactiveWeapon(category, Equal_Blade, RecipeType.ENHANCED_CRAFTING_TABLE, Equilibrium_Blade_recipe);
+		Equilibrium_Blade_item.isDisenchantable();
 		Equilibrium_Blade_item.register(this); //Equilibrium
 		//Research
 		NamespacedKey ender_fragments_research_id = new NamespacedKey(this, "ender_fragments_r");

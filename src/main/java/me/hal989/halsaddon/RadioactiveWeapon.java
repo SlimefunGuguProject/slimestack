@@ -12,13 +12,11 @@ public class RadioactiveWeapon extends SlimefunItem implements Radioactive {
 
     public RadioactiveWeapon(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
+        disenchantable = false;
     }
 
     @Override
     public Radioactivity getRadioactivity() {
         return Radioactivity.VERY_DEADLY;
     }
-
-
-
 }
