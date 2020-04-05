@@ -43,7 +43,7 @@ public class GroundTome extends SlimefunItem {
             }
             for (Entity n : event.getPlayer().getNearbyEntities(10.0, 10.0, 10.0)) {
                 if (n instanceof LivingEntity && !(n instanceof ArmorStand) && !n.getUniqueId().equals(event.getPlayer().getUniqueId())) {
-                    ((LivingEntity) n).addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 60, 130)); //levitation effect
+                    ((LivingEntity) n).addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 60, -100)); //levitation effect
                     n.getWorld().playSound(n.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1, 1);
                 }
             }

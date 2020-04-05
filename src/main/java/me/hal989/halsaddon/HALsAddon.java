@@ -17,6 +17,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+
 public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 	
 	@Override
@@ -49,6 +50,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 //Defining Items
 		SlimefunItemStack end_staff = new SlimefunItemStack("ENDER_STAFF", Material.STICK, "&6Elemental Staff - &5&oEnder", "", "&7Element: &5&oEnder","","&eRight Click &7to teleport.");
 		SlimefunItemStack levitation_bow = new SlimefunItemStack("LEVITATION_BOW", Material.BOW, "&dShulker Bow", "","&fAny enemies hit by arrows fired by this bow are launched into the air!");
+		SlimefunItemStack ender_crossbow = new SlimefunItemStack("ENDER_CROSSBOW", Material.CROSSBOW, "&5Ender Crossbow", "","&fSwitch places with any enemy hit by an arrow of this crossbow!");
 			end_staff.addUnsafeEnchantment(Enchantment.CHANNELING, 1);
 		SlimefunItemStack FrozenBar_1 = new SlimefunItemStack("FROZEN_BAR_1", Material.IRON_INGOT, "&5Frozen Bar &d(33%)", "");
 		SlimefunItemStack EndFragment = new SlimefunItemStack("END_FRAGMENT", Material.IRON_NUGGET, "&dEnder Fragment", "");
@@ -73,8 +75,8 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		Equal_Blade.addUnsafeEnchantment(Enchantment.SWEEPING_EDGE,3);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.DURABILITY,10); //Equilibrium
 		SlimefunItemStack Trapped_ShulkerBox = new SlimefunItemStack("TRAPPED_SHULKERBOX", Material.SHULKER_BOX, "&fTrapped Shulker Box", "","&fAnyone who tries to open the box will","&fget levitation for 5 seconds.");
-		SlimefunItemStack Levitation_Tome = new SlimefunItemStack("LEVITATION_TOME", Material.KNOWLEDGE_BOOK, "&fSpell Tome (&bReverse Gravity&f)", "","&eRight Click &f- Gain a brief period of levitation");
-		SlimefunItemStack Ground_Tome = new SlimefunItemStack("GROUND_TOME", Material.KNOWLEDGE_BOOK, "&fSpell Tome (&8Intensify Gravity&f)", "","&eRight Click &f- Intensify gravity for all nearby entities");
+		SlimefunItemStack Levitation_Tome = new SlimefunItemStack("LEVITATION_TOME", Material.ENCHANTED_BOOK, "&fSpell Tome (&bReverse Gravity&f)", "","&eRight Click &f- Gain a brief period of levitation");
+		SlimefunItemStack Ground_Tome = new SlimefunItemStack("GROUND_TOME", Material.ENCHANTED_BOOK, "&fSpell Tome (&8Intensify Gravity&f)", "","&eRight Click &f- Intensify gravity for all nearby entities");
 		SlimefunItemStack Obsidian_Shield = new SlimefunItemStack("OBSIDIAN_SHIELD", Material.SHIELD, "&fObsidian Shield", "");
 		Obsidian_Shield.addUnsafeEnchantment(Enchantment.DURABILITY,5);
 
@@ -112,6 +114,11 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		};
 		SlimefunItem Obsidian_Shield_item = new SlimefunItem(category, Obsidian_Shield, RecipeType.ENHANCED_CRAFTING_TABLE, Obsidian_Shield_recipe);
 		Obsidian_Shield_item.register(this);
+		ItemStack[] Ender_Crossbow_recipe = {
+				SlimefunItems.RUNE_ENDER, SlimefunItems.RUNE_ENDER, SlimefunItems.RUNE_ENDER,
+				SlimefunItems.RUNE_ENDER, new ItemStack(Material.CROSSBOW), SlimefunItems.RUNE_ENDER,
+				SlimefunItems.RUNE_ENDER, SlimefunItems.RUNE_ENDER, SlimefunItems.RUNE_ENDER
+		};
 
 		EnderStaff endStaff = new EnderStaff(category, end_staff, RecipeType.MAGIC_WORKBENCH, enderStaff_recipe);
 	endStaff.register(this);
@@ -126,6 +133,8 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		};
 		ShulkerBow shulker_bow = new ShulkerBow(levitation_bow,shulkerBow_recipe); //Shulker Bow
 		shulker_bow.register(this);
+		EnderBow ender_crossbow_item = new EnderBow(ender_crossbow,Ender_Crossbow_recipe); //Ender Crossbow
+		ender_crossbow_item.register(this);
 		TrappedShulker Trapped_ShulkerBox_item = new TrappedShulker(category, Trapped_ShulkerBox, RecipeType.ENHANCED_CRAFTING_TABLE, Trapped_ShulkerBox_recipe); //Shulker Bow
 		Trapped_ShulkerBox_item.register(this);
 // End Bars & Fragments
@@ -147,6 +156,13 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 				EndFragment, EndFragment, null,
 				null, null, null,
 		};
+		ItemStack[] DragonBreath_Recipe = {
+				Compressed_EndFragment, null, null,
+				null, null, null,
+				null, null, null,
+		};
+		SlimefunItem DragonBreathAlt_Recipe = new SlimefunItem(category, (SlimefunItemStack) new ItemStack(Material.DRAGON_BREATH), RecipeType.GRIND_STONE, DragonBreath_Recipe);
+		DragonBreathAlt_Recipe.register(this);
 		SlimefunItem CompressedEndFragment_Item = new SlimefunItem(category, Compressed_EndFragment, RecipeType.COMPRESSOR, CompressedEndFragment_recipe);
 		CompressedEndFragment_Item.register(this); //compressed end fragment
 		SlimefunItem FrozenBar1_item = new SlimefunItem(category, FrozenBar_1, RecipeType.PRESSURE_CHAMBER, FrozenBar1_recipe);
