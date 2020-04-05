@@ -50,7 +50,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 //Defining Items
 		SlimefunItemStack end_staff = new SlimefunItemStack("ENDER_STAFF", Material.STICK, "&6Elemental Staff - &5&oEnder", "", "&7Element: &5&oEnder","","&eRight Click &7to teleport.");
 		SlimefunItemStack levitation_bow = new SlimefunItemStack("LEVITATION_BOW", Material.BOW, "&dShulker Bow", "","&fAny enemies hit by arrows fired by this bow are launched into the air!");
-		SlimefunItemStack ender_crossbow = new SlimefunItemStack("ENDER_CROSSBOW", Material.CROSSBOW, "&5Ender Crossbow", "","&fSwitch places with any enemy hit by an arrow of this crossbow!");
+		SlimefunItemStack ender_crossbow = new SlimefunItemStack("ENDER_CROSSBOW", Material.BOW, "&5Ender Crossbow", "","&fSwitch places with any enemy hit by an arrow of this bow!");
 			end_staff.addUnsafeEnchantment(Enchantment.CHANNELING, 1);
 		SlimefunItemStack FrozenBar_1 = new SlimefunItemStack("FROZEN_BAR_1", Material.IRON_INGOT, "&5Frozen Bar &d(33%)", "");
 		SlimefunItemStack EndFragment = new SlimefunItemStack("END_FRAGMENT", Material.IRON_NUGGET, "&dEnder Fragment", "");
@@ -161,8 +161,8 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 				null, null, null,
 				null, null, null,
 		};
-		SlimefunItem DragonBreathAlt_Recipe = new SlimefunItem(category, (SlimefunItemStack) new ItemStack(Material.DRAGON_BREATH), RecipeType.GRIND_STONE, DragonBreath_Recipe);
-		DragonBreathAlt_Recipe.register(this);
+		//SlimefunItem DragonBreathAlt_Recipe = new SlimefunItem(category, (SlimefunItemStack) new ItemStack(Material.DRAGON_BREATH), RecipeType.GRIND_STONE, DragonBreath_Recipe);
+		//DragonBreathAlt_Recipe.register(this);
 		SlimefunItem CompressedEndFragment_Item = new SlimefunItem(category, Compressed_EndFragment, RecipeType.COMPRESSOR, CompressedEndFragment_recipe);
 		CompressedEndFragment_Item.register(this); //compressed end fragment
 		SlimefunItem FrozenBar1_item = new SlimefunItem(category, FrozenBar_1, RecipeType.PRESSURE_CHAMBER, FrozenBar1_recipe);
