@@ -20,39 +20,56 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class HALsAddon extends JavaPlugin implements SlimefunAddon {
+	public static SlimefunItemStack Trapped_ShulkerBox;
+	public static SlimefunItemStack Levitation_Tome;
+	public static SlimefunItemStack endStonePickaxe;
+	public static SlimefunItemStack endStoneAxe;
+	public static SlimefunItemStack endStoneShovel;
+	public static SlimefunItemStack endStoneSword;
+	public static SlimefunItemStack endStoneHoe;
 
 	@Override
 	public void onEnable() {
+		Trapped_ShulkerBox = new SlimefunItemStack("TRAPPED_SHULKERBOX", Material.SHULKER_BOX, "&fTrapped Shulker Box", "","&fAnyone who tries to open the box will","&fget levitation for 5 seconds.");
+
 		SlimefunItemStack end_staff = new SlimefunItemStack("ENDER_STAFF", Material.STICK, "&6Elemental Staff - &5&oEnder", "", "&7Element: &5&oEnder","","&eRight Click &7to teleport.");
 		SlimefunItemStack levitation_bow = new SlimefunItemStack("LEVITATION_BOW", Material.BOW, "&dShulker Bow", "","&fAny enemies hit by arrows fired by this bow are launched into the air!");
 		SlimefunItemStack ender_crossbow = new SlimefunItemStack("ENDER_CROSSBOW", Material.BOW, "&5Ender Crossbow", "","&fSwitch places with any enemy hit by an arrow of this bow!");
 		end_staff.addUnsafeEnchantment(Enchantment.CHANNELING, 1);
-		SlimefunItemStack FrozenBar_1 = new SlimefunItemStack("FROZEN_BAR_1", Material.IRON_INGOT, "&5Frozen Bar &d(33%)", "");
-		SlimefunItemStack EndFragment = new SlimefunItemStack("END_FRAGMENT", Material.IRON_NUGGET, "&dEnder Fragment", "");
-		SlimefunItemStack Compressed_EndFragment = new SlimefunItemStack("COMPRESSED_END_FRAGMENT", Material.IRON_NUGGET, "&dCompressed Ender Fragment", "");
-		SlimefunItemStack FrozenBar_2 = new SlimefunItemStack("FROZEN_BAR_2", Material.IRON_INGOT, "&5Frozen Bar &d(66%)", "");
-		SlimefunItemStack FrozenBar_Full = new SlimefunItemStack("FROZEN_BAR_FULL", Material.IRON_INGOT, "&5Frozen Bar", "");
+		SlimefunItemStack FrozenBar_1 = new SlimefunItemStack("FROZEN_BAR_1", Material.IRON_INGOT, "&5Frozen Bar &d(33%)");
+		SlimefunItemStack EndFragment = new SlimefunItemStack("END_FRAGMENT", Material.IRON_NUGGET, "&dEnder Fragment");
+		SlimefunItemStack Compressed_EndFragment = new SlimefunItemStack("COMPRESSED_END_FRAGMENT", Material.IRON_NUGGET, "&dCompressed Ender Fragment");
+		SlimefunItemStack FrozenBar_2 = new SlimefunItemStack("FROZEN_BAR_2", Material.IRON_INGOT, "&5Frozen Bar &d(66%)");
+		SlimefunItemStack FrozenBar_Full = new SlimefunItemStack("FROZEN_BAR_FULL", Material.IRON_INGOT, "&5Frozen Bar");
 		SlimefunItemStack Blistering_Blade = new SlimefunItemStack("BLISTERING_BLADE", Material.GOLDEN_SWORD, "&6Blistering Blade", "", LoreBuilder.radioactive(Radioactivity.VERY_DEADLY), LoreBuilder.HAZMAT_SUIT_REQUIRED);
-		Blistering_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ALL,9);
+		Blistering_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ALL,10);
 		Blistering_Blade.addUnsafeEnchantment(Enchantment.FIRE_ASPECT,4);
 		Blistering_Blade.addUnsafeEnchantment(Enchantment.SWEEPING_EDGE,3);
 		Blistering_Blade.addUnsafeEnchantment(Enchantment.DURABILITY,10); //Blistering Blade
-		SlimefunItemStack Freezing_Blade = new SlimefunItemStack("FREEZING_BLADE", Material.DIAMOND_SWORD, "&bFreezing Blade", "");
+		SlimefunItemStack Freezing_Blade = new SlimefunItemStack("FREEZING_BLADE", Material.DIAMOND_SWORD, "&bFreezing Blade");
 		Freezing_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ALL,5);
-		Freezing_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ARTHROPODS,2);
-		Freezing_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_UNDEAD,2);
+		Freezing_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ARTHROPODS,3);
+		Freezing_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_UNDEAD,3);
 		Freezing_Blade.addUnsafeEnchantment(Enchantment.DURABILITY,5); //Freezing Blade
 		SlimefunItemStack Equal_Blade = new SlimefunItemStack("EQUILIBRIUM", Material.IRON_SWORD, "&9Equilibrium", "","&fFew have obtained this sword, even fewer have" ,"&fthe capabilities to wield it.","",LoreBuilder.radioactive(Radioactivity.VERY_DEADLY), LoreBuilder.HAZMAT_SUIT_REQUIRED);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ALL,7);
-		Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ARTHROPODS,2);
-		Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_UNDEAD,2);
+		Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ARTHROPODS,3);
+		Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_UNDEAD,3);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.FIRE_ASPECT,4);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.SWEEPING_EDGE,3);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.DURABILITY,10); //Equilibrium
-		SlimefunItemStack Levitation_Tome = new SlimefunItemStack("LEVITATION_TOME", Material.ENCHANTED_BOOK, "&fSpell Tome (&bReverse Gravity&f)", "","&eRight Click &f- Gain a brief period of levitation");
+		Levitation_Tome = new SlimefunItemStack("LEVITATION_TOME", Material.ENCHANTED_BOOK, "&fSpell Tome (&bReverse Gravity&f)", "","&eRight Click &f- Gain a brief period of levitation");
 		SlimefunItemStack Ground_Tome = new SlimefunItemStack("GROUND_TOME", Material.ENCHANTED_BOOK, "&fSpell Tome (&8Intensify Gravity&f)", "","&eRight Click &f- Intensify gravity for all nearby entities");
-		SlimefunItemStack Obsidian_Shield = new SlimefunItemStack("OBSIDIAN_SHIELD", Material.SHIELD, "&fObsidian Shield", "");
+		SlimefunItemStack Obsidian_Shield = new SlimefunItemStack("OBSIDIAN_SHIELD", Material.SHIELD, "&fObsidian Shield");
 		Obsidian_Shield.addUnsafeEnchantment(Enchantment.DURABILITY,5);
+
+		endStonePickaxe = new SlimefunItemStack("ENDSTONE_PICKAXE", Material.GOLDEN_PICKAXE, "&fEndstone Pickaxe", "","&e Right Click &f- Pay an ender lump","&fto restore 2 durability to the pickaxe.");
+		endStoneShovel = new SlimefunItemStack("ENDSTONE_SHOVEL", Material.GOLDEN_SHOVEL, "&fEndstone Shovel", "","&e Right Click &f- Pay an ender lump","&fto restore 2 durability to the shovel.");
+		endStoneSword = new SlimefunItemStack("ENDSTONE_SWORD", Material.GOLDEN_SWORD, "&fEndstone Sword", "","&e Right Click &f- Pay an ender lump","&fto restore 2 durability to the sword.");
+		endStoneAxe = new SlimefunItemStack("ENDSTONE_AXE", Material.GOLDEN_AXE, "&fEndstone Axe", "","&e Right Click &f- Pay an ender lump","&fto restore 2 durability to the axe.");
+		endStoneHoe = new SlimefunItemStack("ENDSTONE_HOE", Material.GOLDEN_HOE, "&fEndstone Hoe", "","&e Right Click &f- Pay an ender lump","&fto restore 2 durability to the hoe.");
+
+
 		// Read something from your config.yml
 		Config cfg = new Config(this);
 
@@ -91,6 +108,44 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 				null, SlimefunItems.STAFF_ELEMENTAL, null,
 				SlimefunItems.STAFF_ELEMENTAL, null, null
 		};
+//Endstone Tools
+		ItemStack[] endstonePickaxeRecipe = {
+				new ItemStack(Material.END_STONE), new ItemStack(Material.END_STONE), new ItemStack(Material.END_STONE),
+				null, new ItemStack(Material.BLAZE_ROD), null,
+				null, new ItemStack(Material.BLAZE_ROD), null
+		};
+		ItemStack[] endstoneShovelRecipe = {
+				null, new ItemStack(Material.END_STONE), null,
+				null, new ItemStack(Material.BLAZE_ROD), null,
+				null, new ItemStack(Material.BLAZE_ROD), null
+		};
+		ItemStack[] endstoneHoeRecipe = {
+				null, new ItemStack(Material.END_STONE), new ItemStack(Material.END_STONE),
+				null, new ItemStack(Material.BLAZE_ROD), null,
+				null, new ItemStack(Material.BLAZE_ROD), null
+		};
+
+		ItemStack[] endstoneAxeRecipe = {
+				null, new ItemStack(Material.END_STONE), new ItemStack(Material.END_STONE),
+				null, new ItemStack(Material.BLAZE_ROD), new ItemStack(Material.END_STONE),
+				null, new ItemStack(Material.BLAZE_ROD), null
+		};
+
+		ItemStack[] endstoneSwordRecipe = {
+				null, new ItemStack(Material.END_STONE), null,
+				null, new ItemStack(Material.END_STONE), null,
+				null, new ItemStack(Material.BLAZE_ROD), null
+		};
+		HasteItem endstoneHoeItem = new HasteItem(category, endStoneHoe, RecipeType.ENHANCED_CRAFTING_TABLE, endstoneHoeRecipe);
+		HasteItem endstoneShovelItem = new HasteItem(category, endStoneShovel, RecipeType.ENHANCED_CRAFTING_TABLE, endstoneShovelRecipe);
+		HasteItem endstoneAxeItem = new HasteItem(category, endStoneAxe, RecipeType.ENHANCED_CRAFTING_TABLE, endstoneAxeRecipe);
+		HasteItem endstonePickaxeItem = new HasteItem(category, endStonePickaxe, RecipeType.ENHANCED_CRAFTING_TABLE, endstonePickaxeRecipe);
+		HasteItem endstoneSwordItem = new HasteItem(category, endStoneSword, RecipeType.ENHANCED_CRAFTING_TABLE, endstoneSwordRecipe);
+		endstoneAxeItem.register(this);
+		endstonePickaxeItem.register(this);
+		endstoneShovelItem.register(this);
+		endstoneHoeItem.register(this);
+		endstoneSwordItem.register(this);
 
 		ItemStack[] Trapped_ShulkerBox_recipe = {
 				null, null, null,
@@ -105,7 +160,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		};
 		ItemStack[] shulkerHead = {
 				null, null, null,
-				null, new CustomItem(SkullItem.fromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjFkMzUzNGQyMWZlODQ5OTI2MmRlODdhZmZiZWFjNGQyNWZmZGUzNWM4YmRjYTA2OWU2MWUxNzg3ZmYyZiJ9fX0="), "&eDropped by: &cShulkers"), null,
+				null, new CustomItem(SkullItem.fromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjFkMzUzNGQyMWZlODQ5OTI2MmRlODdhZmZiZWFjNGQyNWZmZGUzNWM4YmRjYTA2OWU2MWUxNzg3ZmYyZiJ9fX0="), "&dShulker"), null,
 				null, null, null
 		};
 		ItemStack[] levitationTomeT2 = {
@@ -254,7 +309,6 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 	public JavaPlugin getJavaPlugin() {
 		return this;
 	}
-	public static final SlimefunItemStack Trapped_ShulkerBox = new SlimefunItemStack("TRAPPED_SHULKERBOX", Material.SHULKER_BOX, "&fTrapped Shulker Box", "","&fAnyone who tries to open the box will","&fget levitation for 5 seconds.");
 }
 
 
