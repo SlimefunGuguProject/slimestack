@@ -19,27 +19,10 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
-
-
 public class HALsAddon extends JavaPlugin implements SlimefunAddon {
-
 
 	@Override
 	public void onEnable() {
-		// Read something from your config.yml
-		Config cfg = new Config(this);
-
-		if (cfg.getBoolean("options.auto-update")) {
-			// You could start an Auto-Updater for example
-		}
-
-		// Slimefun4 also already comes with a bundled version of bStats
-		// You can use bStats to collect usage data about your plugin
-		// More info: https://bstats.org/getting-started
-		// Set bStatsId to the id of your plugin
-		int bStatsId = -1;
-		new Metrics(this, bStatsId);
-		new KillHandler(this);
 		SlimefunItemStack end_staff = new SlimefunItemStack("ENDER_STAFF", Material.STICK, "&6Elemental Staff - &5&oEnder", "", "&7Element: &5&oEnder","","&eRight Click &7to teleport.");
 		SlimefunItemStack levitation_bow = new SlimefunItemStack("LEVITATION_BOW", Material.BOW, "&dShulker Bow", "","&fAny enemies hit by arrows fired by this bow are launched into the air!");
 		SlimefunItemStack ender_crossbow = new SlimefunItemStack("ENDER_CROSSBOW", Material.BOW, "&5Ender Crossbow", "","&fSwitch places with any enemy hit by an arrow of this bow!");
@@ -66,11 +49,24 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		Equal_Blade.addUnsafeEnchantment(Enchantment.FIRE_ASPECT,4);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.SWEEPING_EDGE,3);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.DURABILITY,10); //Equilibrium
-		final SlimefunItemStack Trapped_ShulkerBox = new SlimefunItemStack("TRAPPED_SHULKERBOX", Material.SHULKER_BOX, "&fTrapped Shulker Box", "","&fAnyone who tries to open the box will","&fget levitation for 5 seconds.");
 		SlimefunItemStack Levitation_Tome = new SlimefunItemStack("LEVITATION_TOME", Material.ENCHANTED_BOOK, "&fSpell Tome (&bReverse Gravity&f)", "","&eRight Click &f- Gain a brief period of levitation");
 		SlimefunItemStack Ground_Tome = new SlimefunItemStack("GROUND_TOME", Material.ENCHANTED_BOOK, "&fSpell Tome (&8Intensify Gravity&f)", "","&eRight Click &f- Intensify gravity for all nearby entities");
 		SlimefunItemStack Obsidian_Shield = new SlimefunItemStack("OBSIDIAN_SHIELD", Material.SHIELD, "&fObsidian Shield", "");
 		Obsidian_Shield.addUnsafeEnchantment(Enchantment.DURABILITY,5);
+		// Read something from your config.yml
+		Config cfg = new Config(this);
+
+		if (cfg.getBoolean("options.auto-update")) {
+			// You could start an Auto-Updater for example
+		}
+
+		// Slimefun4 also already comes with a bundled version of bStats
+		// You can use bStats to collect usage data about your plugin
+		// More info: https://bstats.org/getting-started
+		// Set bStatsId to the id of your plugin
+		int bStatsId = -1;
+		new Metrics(this, bStatsId);
+		new KillHandler(this);
 
 
 		// Create a new Category
@@ -258,6 +254,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 	public JavaPlugin getJavaPlugin() {
 		return this;
 	}
-
+	public static final SlimefunItemStack Trapped_ShulkerBox = new SlimefunItemStack("TRAPPED_SHULKERBOX", Material.SHULKER_BOX, "&fTrapped Shulker Box", "","&fAnyone who tries to open the box will","&fget levitation for 5 seconds.");
 }
+
 
