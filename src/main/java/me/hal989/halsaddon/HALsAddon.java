@@ -12,14 +12,18 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.bstats.bukkit.Metrics;
 import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
+import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
+
+
 public class HALsAddon extends JavaPlugin implements SlimefunAddon {
-	
+
+
 	@Override
 	public void onEnable() {
 		// Read something from your config.yml
@@ -35,23 +39,11 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		// Set bStatsId to the id of your plugin
 		int bStatsId = -1;
 		new Metrics(this, bStatsId);
-
-
-		// Create a new Category
-		// This Category will use this ItemStack
-		NamespacedKey categoryId = new NamespacedKey(this, "ender_items");
-		CustomItem categoryItem = new CustomItem(Material.END_STONE, "&5Addon Jam: The End");
-
-		Category category = new Category(categoryId, categoryItem);
-
-		// Create a new Slimefun ItemStack
-		// This class has many constructors, it is very important that you give each item a unique id.
-
-//Defining Items
+		new KillHandler(this);
 		SlimefunItemStack end_staff = new SlimefunItemStack("ENDER_STAFF", Material.STICK, "&6Elemental Staff - &5&oEnder", "", "&7Element: &5&oEnder","","&eRight Click &7to teleport.");
 		SlimefunItemStack levitation_bow = new SlimefunItemStack("LEVITATION_BOW", Material.BOW, "&dShulker Bow", "","&fAny enemies hit by arrows fired by this bow are launched into the air!");
 		SlimefunItemStack ender_crossbow = new SlimefunItemStack("ENDER_CROSSBOW", Material.BOW, "&5Ender Crossbow", "","&fSwitch places with any enemy hit by an arrow of this bow!");
-			end_staff.addUnsafeEnchantment(Enchantment.CHANNELING, 1);
+		end_staff.addUnsafeEnchantment(Enchantment.CHANNELING, 1);
 		SlimefunItemStack FrozenBar_1 = new SlimefunItemStack("FROZEN_BAR_1", Material.IRON_INGOT, "&5Frozen Bar &d(33%)", "");
 		SlimefunItemStack EndFragment = new SlimefunItemStack("END_FRAGMENT", Material.IRON_NUGGET, "&dEnder Fragment", "");
 		SlimefunItemStack Compressed_EndFragment = new SlimefunItemStack("COMPRESSED_END_FRAGMENT", Material.IRON_NUGGET, "&dCompressed Ender Fragment", "");
@@ -74,11 +66,25 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		Equal_Blade.addUnsafeEnchantment(Enchantment.FIRE_ASPECT,4);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.SWEEPING_EDGE,3);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.DURABILITY,10); //Equilibrium
-		SlimefunItemStack Trapped_ShulkerBox = new SlimefunItemStack("TRAPPED_SHULKERBOX", Material.SHULKER_BOX, "&fTrapped Shulker Box", "","&fAnyone who tries to open the box will","&fget levitation for 5 seconds.");
+		final SlimefunItemStack Trapped_ShulkerBox = new SlimefunItemStack("TRAPPED_SHULKERBOX", Material.SHULKER_BOX, "&fTrapped Shulker Box", "","&fAnyone who tries to open the box will","&fget levitation for 5 seconds.");
 		SlimefunItemStack Levitation_Tome = new SlimefunItemStack("LEVITATION_TOME", Material.ENCHANTED_BOOK, "&fSpell Tome (&bReverse Gravity&f)", "","&eRight Click &f- Gain a brief period of levitation");
 		SlimefunItemStack Ground_Tome = new SlimefunItemStack("GROUND_TOME", Material.ENCHANTED_BOOK, "&fSpell Tome (&8Intensify Gravity&f)", "","&eRight Click &f- Intensify gravity for all nearby entities");
 		SlimefunItemStack Obsidian_Shield = new SlimefunItemStack("OBSIDIAN_SHIELD", Material.SHIELD, "&fObsidian Shield", "");
 		Obsidian_Shield.addUnsafeEnchantment(Enchantment.DURABILITY,5);
+
+
+		// Create a new Category
+		// This Category will use this ItemStack
+		NamespacedKey categoryId = new NamespacedKey(this, "ender_items");
+		CustomItem categoryItem = new CustomItem(Material.END_STONE, "&5Addon Jam: The End");
+
+		Category category = new Category(categoryId, categoryItem);
+
+		// Create a new Slimefun ItemStack
+		// This class has many constructors, it is very important that you give each item a unique id.
+
+//Defining Items
+
 
 
 
@@ -101,12 +107,17 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 				new ItemStack(Material.OBSIDIAN), new ItemStack(Material.SHIELD), new ItemStack(Material.OBSIDIAN),
 				new ItemStack(Material.OBSIDIAN), new ItemStack(Material.OBSIDIAN), new ItemStack(Material.OBSIDIAN)
 		};
-
-		ItemStack[] Levitation_Tome_recipe = {
+		ItemStack[] shulkerHead = {
+				null, null, null,
+				null, new CustomItem(SkullItem.fromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjFkMzUzNGQyMWZlODQ5OTI2MmRlODdhZmZiZWFjNGQyNWZmZGUzNWM4YmRjYTA2OWU2MWUxNzg3ZmYyZiJ9fX0="), "&eDropped by: &cShulkers"), null,
+				null, null, null
+		};
+		ItemStack[] levitationTomeT2 = {
 				SlimefunItems.ENDER_LUMP_2, new ItemStack(Material.FEATHER), SlimefunItems.ENDER_LUMP_2,
 				new ItemStack(Material.FEATHER), SlimefunItems.MAGICAL_BOOK_COVER, new ItemStack(Material.FEATHER),
 				SlimefunItems.ENDER_LUMP_2, new ItemStack(Material.FEATHER), SlimefunItems.ENDER_LUMP_2
 		};
+
 		ItemStack[] Ground_Tome_recipe = {
 				SlimefunItems.ENDER_LUMP_2, new ItemStack(Material.ANVIL), SlimefunItems.ENDER_LUMP_2,
 				SlimefunItems.ENDER_LUMP_2, SlimefunItems.MAGICAL_BOOK_COVER, SlimefunItems.ENDER_LUMP_2,
@@ -122,7 +133,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 
 		EnderStaff endStaff = new EnderStaff(category, end_staff, RecipeType.MAGIC_WORKBENCH, enderStaff_recipe);
 	endStaff.register(this);
-		LevitationTome Levitation_Tome_item = new LevitationTome(category, Levitation_Tome, RecipeType.MAGIC_WORKBENCH, Levitation_Tome_recipe);
+		LevitationTome Levitation_Tome_item = new LevitationTome(category, Levitation_Tome, RecipeType.MOB_DROP, shulkerHead);
 		Levitation_Tome_item.register(this);
 		GroundTome Ground_Tome_item = new GroundTome(category, Ground_Tome, RecipeType.MAGIC_WORKBENCH, Ground_Tome_recipe);
 		Ground_Tome_item.register(this);
@@ -135,7 +146,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		shulker_bow.register(this);
 		EnderBow ender_crossbow_item = new EnderBow(ender_crossbow,Ender_Crossbow_recipe); //Ender Crossbow
 		ender_crossbow_item.register(this);
-		TrappedShulker Trapped_ShulkerBox_item = new TrappedShulker(category, Trapped_ShulkerBox, RecipeType.ENHANCED_CRAFTING_TABLE, Trapped_ShulkerBox_recipe); //Shulker Bow
+		TrappedShulker Trapped_ShulkerBox_item = new TrappedShulker(category, Trapped_ShulkerBox, RecipeType.MOB_DROP, shulkerHead); //Trapped Shulker Box
 		Trapped_ShulkerBox_item.register(this);
 // End Bars & Fragments
 
