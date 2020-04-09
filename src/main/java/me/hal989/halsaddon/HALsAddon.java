@@ -8,11 +8,13 @@ import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.Research;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import me.mrCookieSlime.Slimefun.SlimefunPlugin;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.bstats.bukkit.Metrics;
 import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
@@ -27,10 +29,17 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 	public static SlimefunItemStack endStoneShovel;
 	public static SlimefunItemStack endStoneSword;
 	public static SlimefunItemStack endStoneHoe;
+	public static SlimefunItemStack endermegaEgg;
+	public static RecipeType BOSS_DROP;
+	public static SlimefunItemStack endermegaHelmet;
+	public static SlimefunItemStack endermegaChestplate;
+	public static SlimefunItemStack endermegaLeggings;
+	public static SlimefunItemStack endermegaBoots;
 
 	@Override
 	public void onEnable() {
 		Trapped_ShulkerBox = new SlimefunItemStack("TRAPPED_SHULKERBOX", Material.SHULKER_BOX, "&fTrapped Shulker Box", "","&fAnyone who tries to open the box will","&fget levitation for 5 seconds.");
+		endermegaEgg = new SlimefunItemStack("ENDERMEGA_EGG",Material.ENDERMAN_SPAWN_EGG,"&5Endermega Spawn Egg");
 
 		SlimefunItemStack end_staff = new SlimefunItemStack("ENDER_STAFF", Material.STICK, "&6Elemental Staff - &5&oEnder", "", "&7Element: &5&oEnder","","&eRight Click &7to teleport.");
 		SlimefunItemStack levitation_bow = new SlimefunItemStack("LEVITATION_BOW", Material.BOW, "&dShulker Bow", "","&fAny enemies hit by arrows fired by this bow are launched into the air!");
@@ -52,7 +61,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		Freezing_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_UNDEAD,3);
 		Freezing_Blade.addUnsafeEnchantment(Enchantment.DURABILITY,5); //Freezing Blade
 		SlimefunItemStack Equal_Blade = new SlimefunItemStack("EQUILIBRIUM", Material.IRON_SWORD, "&9Equilibrium", "","&fFew have obtained this sword, even fewer have" ,"&fthe capabilities to wield it.","",LoreBuilder.radioactive(Radioactivity.VERY_DEADLY), LoreBuilder.HAZMAT_SUIT_REQUIRED);
-		Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ALL,7);
+		Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ALL,8);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ARTHROPODS,3);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_UNDEAD,3);
 		Equal_Blade.addUnsafeEnchantment(Enchantment.FIRE_ASPECT,4);
@@ -63,11 +72,32 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		SlimefunItemStack Obsidian_Shield = new SlimefunItemStack("OBSIDIAN_SHIELD", Material.SHIELD, "&fObsidian Shield");
 		Obsidian_Shield.addUnsafeEnchantment(Enchantment.DURABILITY,5);
 
-		endStonePickaxe = new SlimefunItemStack("ENDSTONE_PICKAXE", Material.GOLDEN_PICKAXE, "&fEndstone Pickaxe", "","&e Right Click &f- Pay an ender lump","&fto restore 2 durability to the pickaxe.");
-		endStoneShovel = new SlimefunItemStack("ENDSTONE_SHOVEL", Material.GOLDEN_SHOVEL, "&fEndstone Shovel", "","&e Right Click &f- Pay an ender lump","&fto restore 2 durability to the shovel.");
-		endStoneSword = new SlimefunItemStack("ENDSTONE_SWORD", Material.GOLDEN_SWORD, "&fEndstone Sword", "","&e Right Click &f- Pay an ender lump","&fto restore 2 durability to the sword.");
-		endStoneAxe = new SlimefunItemStack("ENDSTONE_AXE", Material.GOLDEN_AXE, "&fEndstone Axe", "","&e Right Click &f- Pay an ender lump","&fto restore 2 durability to the axe.");
-		endStoneHoe = new SlimefunItemStack("ENDSTONE_HOE", Material.GOLDEN_HOE, "&fEndstone Hoe", "","&e Right Click &f- Pay an ender lump","&fto restore 2 durability to the hoe.");
+		endStonePickaxe = new SlimefunItemStack("ENDSTONE_PICKAXE", Material.GOLDEN_PICKAXE, "&fEndstone Pickaxe", "","&e Shift + Right Click &f- Pay an ender lump","&fto restore 2 durability to the pickaxe.");
+		endStoneShovel = new SlimefunItemStack("ENDSTONE_SHOVEL", Material.GOLDEN_SHOVEL, "&fEndstone Shovel", "","&e Shift + Right Click &f- Pay an ender lump","&fto restore 2 durability to the shovel.");
+		endStoneSword = new SlimefunItemStack("ENDSTONE_SWORD", Material.GOLDEN_SWORD, "&fEndstone Sword", "","&e Shift + Right Click &f- Pay an ender lump","&fto restore 2 durability to the sword.");
+		endStoneAxe = new SlimefunItemStack("ENDSTONE_AXE", Material.GOLDEN_AXE, "&fEndstone Axe", "","&e Shift + Right Click &f- Pay an ender lump","&fto restore 2 durability to the axe.");
+		endStoneHoe = new SlimefunItemStack("ENDSTONE_HOE", Material.GOLDEN_HOE, "&fEndstone Hoe", "","&e Shift + Right Click &f- Pay an ender lump","&fto restore 2 durability to the hoe.");
+		BOSS_DROP = new RecipeType(new NamespacedKey(SlimefunPlugin.instance, "boss_drop"), new CustomItem(Material.DIAMOND_SWORD, "&cBoss Drop"), null, "", "&rKill the specified Boss for a chance to obtain this Item");
+
+		//Endermega drops
+		endermegaHelmet = new SlimefunItemStack("ENDERMEGA_HELMET",Material.LEATHER_HELMET, Color.BLACK,"&5Endermega Helmet","&5Endermega&d's power flows through this set...","","&8Set bonus: Teleport when hit");
+		endermegaHelmet.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL,5);
+		endermegaHelmet.addUnsafeEnchantment(Enchantment.PROTECTION_PROJECTILE,2);
+		endermegaHelmet.addUnsafeEnchantment(Enchantment.DURABILITY,8);
+		endermegaChestplate = new SlimefunItemStack("ENDERMEGA_HELMET",Material.LEATHER_CHESTPLATE, Color.BLACK,"&5Endermega Chestplate","&5Endermega&d's power flows through this set...","","&8Set bonus: Teleport when hit");
+		endermegaChestplate.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL,5);
+		endermegaChestplate.addUnsafeEnchantment(Enchantment.PROTECTION_PROJECTILE,2);
+		endermegaChestplate.addUnsafeEnchantment(Enchantment.DURABILITY,8);
+		endermegaLeggings = new SlimefunItemStack("ENDERMEGA_HELMET",Material.LEATHER_LEGGINGS, Color.BLACK,"&5Endermega Leggings","&5Endermega&d's power flows through this set...","","&8Set bonus: Teleport when hit");
+		endermegaLeggings.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL,5);
+		endermegaLeggings.addUnsafeEnchantment(Enchantment.PROTECTION_PROJECTILE,2);
+		endermegaLeggings.addUnsafeEnchantment(Enchantment.DURABILITY,8);
+		endermegaBoots = new SlimefunItemStack("ENDERMEGA_HELMET",Material.LEATHER_BOOTS, Color.BLACK,"&5Endermega Boots","&5Endermega&d's power flows through this set...","","&8Set bonus: Teleport when hit");
+		endermegaBoots.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL,5);
+		endermegaBoots.addUnsafeEnchantment(Enchantment.PROTECTION_PROJECTILE,2);
+		endermegaBoots.addUnsafeEnchantment(Enchantment.DURABILITY,8);
+
+
 
 
 		// Read something from your config.yml
@@ -84,6 +114,8 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		int bStatsId = -1;
 		new Metrics(this, bStatsId);
 		new KillHandler(this);
+		new TeleportHandler(this);
+		new DamageHandler(this);
 
 
 		// Create a new Category
@@ -163,10 +195,10 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 				null, new CustomItem(SkullItem.fromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjFkMzUzNGQyMWZlODQ5OTI2MmRlODdhZmZiZWFjNGQyNWZmZGUzNWM4YmRjYTA2OWU2MWUxNzg3ZmYyZiJ9fX0="), "&dShulker"), null,
 				null, null, null
 		};
-		ItemStack[] levitationTomeT2 = {
-				SlimefunItems.ENDER_LUMP_2, new ItemStack(Material.FEATHER), SlimefunItems.ENDER_LUMP_2,
-				new ItemStack(Material.FEATHER), SlimefunItems.MAGICAL_BOOK_COVER, new ItemStack(Material.FEATHER),
-				SlimefunItems.ENDER_LUMP_2, new ItemStack(Material.FEATHER), SlimefunItems.ENDER_LUMP_2
+		ItemStack[] endermegaDrop = {
+				null, null, null,
+				null, new CustomItem(SkullItem.fromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmJjZjNmNTc4NzE5NmQyNTZjMTA0ZmZmYWU4ZTUyNjUyNDIyMjJlMjEzOGE1N2ExNjY2YzE1YjVmNmM4N2I5OCJ9fX0="), "&5Endermega"), null,
+				null, null, null
 		};
 
 		ItemStack[] Ground_Tome_recipe = {
@@ -257,6 +289,11 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		};
 		SlimefunItem Freezing_Blade_item = new SlimefunItem(category, Freezing_Blade, RecipeType.ENHANCED_CRAFTING_TABLE, Freezing_Blade_recipe);
 		Freezing_Blade_item.register(this); //Freezing Blade
+		ItemStack[] endermegaEggRecipe = {
+				SlimefunItems.RUNE_ENDER, SlimefunItems.ENDER_LUMP_3, SlimefunItems.RUNE_ENDER,
+				EndFragment, new ItemStack(Material.EGG), EndFragment,
+				SlimefunItems.RUNE_ENDER, SlimefunItems.ENDER_LUMP_3, SlimefunItems.RUNE_ENDER,
+		};
 		ItemStack[] Equilibrium_Blade_recipe = {
 				null, Freezing_Blade, null,
 				null, Blistering_Blade, null,
@@ -265,6 +302,20 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		RadioactiveWeapon Equilibrium_Blade_item = new RadioactiveWeapon(category, Equal_Blade, RecipeType.ENHANCED_CRAFTING_TABLE, Equilibrium_Blade_recipe);
 		Equilibrium_Blade_item.isDisenchantable();
 		Equilibrium_Blade_item.register(this); //Equilibrium
+
+		//Endermega stuff
+
+		BossEgg endermegaEggItem = new BossEgg(category, endermegaEgg, RecipeType.ANCIENT_ALTAR, endermegaEggRecipe);
+		endermegaEggItem.register(this);
+
+		SlimefunItem endermegaHelmetItem = new SlimefunItem(category, endermegaHelmet, BOSS_DROP, endermegaDrop);
+		endermegaHelmetItem.register(this);
+		SlimefunItem endermegaChestplateItem = new SlimefunItem(category, endermegaChestplate, BOSS_DROP, endermegaDrop);
+		endermegaChestplateItem.register(this);
+		SlimefunItem endermegaLeggingsItem = new SlimefunItem(category, endermegaLeggings, BOSS_DROP, endermegaDrop);
+		endermegaLeggingsItem.register(this);
+		SlimefunItem endermegaBootsItem = new SlimefunItem(category, endermegaBoots, BOSS_DROP, endermegaDrop);
+		endermegaBootsItem.register(this);
 		//Research
 		NamespacedKey ender_fragments_research_id = new NamespacedKey(this, "ender_fragments_r");
 		Research ender_fragments_research = new Research(ender_fragments_research_id, 425989, "Ender Fragments", 13);
@@ -290,6 +341,16 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		Research Hot_cold_research = new Research(Hot_and_cold_research_id, 425993, "Weaponizing Extreme Temperatures", 35);
 		Hot_cold_research.addItems(Equilibrium_Blade_item,Freezing_Blade_item,Blistering_Blade_item);
 		Hot_cold_research.register();
+
+		NamespacedKey endstoneToolsID = new NamespacedKey(this, "endstone_tools_research");
+		Research endstoneToolsResearch = new Research(endstoneToolsID, 425994, "Endstone Tools", 18);
+		endstoneToolsResearch.addItems(endstoneAxeItem,endstonePickaxeItem,endstonePickaxeItem,endstoneShovelItem,endstoneSwordItem);
+		endstoneToolsResearch.register();
+
+		NamespacedKey endermegaID = new NamespacedKey(this, "endermega_research");
+		Research endermegaResearch = new Research(endermegaID, 425995, "Battling Endermega", 34);
+		endermegaResearch.addItems(endermegaBootsItem,endermegaLeggingsItem,endermegaChestplateItem,endermegaHelmetItem,endermegaEggItem);
+		endermegaResearch.register();
 	}
 
 

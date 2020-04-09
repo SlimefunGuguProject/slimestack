@@ -28,6 +28,7 @@ public class HasteItem extends SlimefunItem {
     }
 
     private void onItemRightClick(PlayerRightClickEvent event) {
+        if (event.getPlayer().isSneaking()){
         Player p = event.getPlayer();
         event.cancel();
         if(p.getInventory().containsAtLeast(SlimefunItems.ENDER_LUMP_1, 1)) {
@@ -57,7 +58,7 @@ public class HasteItem extends SlimefunItem {
             }
 
 
-        }
+        }}
     }
 }
 
