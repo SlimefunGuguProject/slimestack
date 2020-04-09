@@ -80,19 +80,19 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		BOSS_DROP = new RecipeType(new NamespacedKey(SlimefunPlugin.instance, "boss_drop"), new CustomItem(Material.DIAMOND_SWORD, "&cBoss Drop"), null, "", "&rKill the specified Boss for a chance to obtain this Item");
 
 		//Endermega drops
-		endermegaHelmet = new SlimefunItemStack("ENDERMEGA_HELMET",Material.LEATHER_HELMET, Color.BLACK,"&5Endermega Helmet","&5Endermega&d's power flows through this set...","","&8Set bonus: Teleport when hit");
+		endermegaHelmet = new SlimefunItemStack("ENDERMEGA_HELMET",Material.LEATHER_HELMET, Color.BLACK,"&5Endermega Helmet","","&5Endermega&d's power flows through this set...","","&9Set bonus: Teleport when hit");
 		endermegaHelmet.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL,5);
 		endermegaHelmet.addUnsafeEnchantment(Enchantment.PROTECTION_PROJECTILE,2);
 		endermegaHelmet.addUnsafeEnchantment(Enchantment.DURABILITY,8);
-		endermegaChestplate = new SlimefunItemStack("ENDERMEGA_HELMET",Material.LEATHER_CHESTPLATE, Color.BLACK,"&5Endermega Chestplate","&5Endermega&d's power flows through this set...","","&8Set bonus: Teleport when hit");
+		endermegaChestplate = new SlimefunItemStack("ENDERMEGA_CHESTPLATE",Material.LEATHER_CHESTPLATE, Color.BLACK,"&5Endermega Chestplate","","&5Endermega&d's power flows through this set...","","&9Set bonus: Teleport when hit");
 		endermegaChestplate.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL,5);
 		endermegaChestplate.addUnsafeEnchantment(Enchantment.PROTECTION_PROJECTILE,2);
 		endermegaChestplate.addUnsafeEnchantment(Enchantment.DURABILITY,8);
-		endermegaLeggings = new SlimefunItemStack("ENDERMEGA_HELMET",Material.LEATHER_LEGGINGS, Color.BLACK,"&5Endermega Leggings","&5Endermega&d's power flows through this set...","","&8Set bonus: Teleport when hit");
+		endermegaLeggings = new SlimefunItemStack("ENDERMEGA_LEGGINGS",Material.LEATHER_LEGGINGS, Color.BLACK,"&5Endermega Leggings","","&5Endermega&d's power flows through this set...","","&9Set bonus: Teleport when hit");
 		endermegaLeggings.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL,5);
 		endermegaLeggings.addUnsafeEnchantment(Enchantment.PROTECTION_PROJECTILE,2);
 		endermegaLeggings.addUnsafeEnchantment(Enchantment.DURABILITY,8);
-		endermegaBoots = new SlimefunItemStack("ENDERMEGA_HELMET",Material.LEATHER_BOOTS, Color.BLACK,"&5Endermega Boots","&5Endermega&d's power flows through this set...","","&8Set bonus: Teleport when hit");
+		endermegaBoots = new SlimefunItemStack("ENDERMEGA_BOOTS",Material.LEATHER_BOOTS, Color.BLACK,"&5Endermega Boots","","&5Endermega&d's power flows through this set...","","&9Set bonus: Teleport when hit");
 		endermegaBoots.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL,5);
 		endermegaBoots.addUnsafeEnchantment(Enchantment.PROTECTION_PROJECTILE,2);
 		endermegaBoots.addUnsafeEnchantment(Enchantment.DURABILITY,8);
