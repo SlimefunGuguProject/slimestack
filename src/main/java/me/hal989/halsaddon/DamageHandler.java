@@ -3,12 +3,10 @@ package me.hal989.halsaddon;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.mrCookieSlime.Slimefun.api.Slimefun;
 import me.mrCookieSlime.Slimefun.cscorelib2.chat.ChatColors;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
-import org.bukkit.entity.Enderman;
-import org.bukkit.entity.Endermite;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -60,10 +58,41 @@ public class DamageHandler implements Listener {
             enderman.setCarriedBlock(null);
             double RNG = Math.random();
             if (RNG>=0.1&&RNG<0.5) {
+                enderman.getWorld().playSound(enderman.getLocation(), Sound.BLOCK_BEACON_DEACTIVATE, 1, 2);
                 Endermite endermite = (Endermite) loc.getWorld().spawnEntity(loc, EntityType.ENDERMITE);
                 endermite.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000, 3));
-                endermite.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 10000, 1));
+                endermite.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 10000, 2));
+                endermite.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 100, 1));
+            }
+            if(enderman.getHealth()<40){
+            RNG = Math.random();
+                if (RNG>=0.3&&RNG<0.5) {
+                    enderman.getWorld().playSound(enderman.getLocation(), Sound.BLOCK_BEACON_DEACTIVATE, 1, 2);
+                    Endermite endermite = (Endermite) loc.getWorld().spawnEntity(loc, EntityType.ENDERMITE);
+                    endermite.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000, 3));
+                    endermite.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 10000, 2));
+                    endermite.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 100, 1));
+                }
+                if (RNG>0.6&&RNG<0.7){
+                    enderman.getWorld().playSound(enderman.getLocation(), Sound.BLOCK_BEACON_POWER_SELECT, 1, 1);
+                    enderman.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 60, 1));
+                    enderman.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 60, 200));
+                    enderman.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 60, -1));
+                    enderman.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 60, -1));
+
+                }
+
+                if(!isEndermegaEnraged) {
+                    isEndermegaEnraged = true;
+                    for (Entity n : enderman.getNearbyEntities(10.0, 10.0, 10.0)) {
+                        if (n instanceof LivingEntity && (n instanceof Player)) {
+                            n.sendMessage(ChatColor.translateAlternateColorCodes('&', "&5Endermega &ehas become &4enraged!"));
+
+                        }
+                    }
+                    }
+                }
             }
         }
-    }}
+    }
 }
