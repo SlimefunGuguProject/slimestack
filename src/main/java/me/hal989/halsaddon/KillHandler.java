@@ -86,7 +86,7 @@ public class KillHandler implements Listener {
                 e.getDrops().add(SlimefunItems.ENDER_LUMP_3);
                 e.getDrops().add(SlimefunItems.ENDER_LUMP_3);
             }
-            isEndermegaEnraged = false;
+            isEndermegaEnraged = false; //allow for another boss
         }
     }
 

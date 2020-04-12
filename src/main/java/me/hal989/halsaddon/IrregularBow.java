@@ -15,7 +15,7 @@ public class IrregularBow extends SlimefunBow {
     public BowShootHandler onShoot() {
         return (e, p) -> {
             p.teleport(new Location(p.getWorld(), p.getLocation().getX(), p.getLocation().getY()+3, p.getLocation().getZ(), p.getLocation().getYaw(), p.getLocation().getPitch()));
-            p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1); //Teleporting the hit entity up 3 blocks
+            p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1); //Teleporting the hit entity up 3 blocks (scrapped)
         };
     }
 }

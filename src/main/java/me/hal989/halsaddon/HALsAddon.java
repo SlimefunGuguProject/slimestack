@@ -39,11 +39,19 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 	public static SlimefunItemStack enderBlade;
 	public static SlimefunItemStack irregularbow;
 	public static SlimefunItemStack endermegaHead;
+	public static SlimefunItemStack DEEPFREEZER;
 	public static Boolean isEndermegaEnraged;
+	public static RecipeType DEEP_FREEZER;
+	public static Category enderCategory;
 
 
 	@Override
 	public void onEnable() {
+		NamespacedKey categoryId = new NamespacedKey(this, "ender_items");
+		CustomItem categoryItem = new CustomItem(Material.END_STONE, "&5Addon Jam: The End");
+
+		enderCategory = new Category(categoryId, categoryItem);
+		DEEPFREEZER = new SlimefunItemStack("DEEPFREEZER", Material.BLUE_ICE, "&bDeep Freezer", "", "&aFreezes Items at an extreme temperature");
 		isEndermegaEnraged = false;
 		Trapped_ShulkerBox = new SlimefunItemStack("TRAPPED_SHULKERBOX", Material.SHULKER_BOX, "&fTrapped Shulker Box", "","&fAnyone who tries to open the box will","&fget levitation for 5 seconds.");
 		endermegaEgg = new SlimefunItemStack("ENDERMEGA_EGG",Material.ENDERMAN_SPAWN_EGG,"&5Endermega Spawn Egg");
@@ -63,7 +71,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		Blistering_Blade.addUnsafeEnchantment(Enchantment.SWEEPING_EDGE,3);
 		Blistering_Blade.addUnsafeEnchantment(Enchantment.DURABILITY,10); //Blistering Blade
 		SlimefunItemStack Freezing_Blade = new SlimefunItemStack("FREEZING_BLADE", Material.DIAMOND_SWORD, "&bFreezing Blade");
-		Freezing_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ALL,5);
+		Freezing_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ALL,4);
 		Freezing_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ARTHROPODS,3);
 		Freezing_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_UNDEAD,3);
 		Freezing_Blade.addUnsafeEnchantment(Enchantment.DURABILITY,5); //Freezing Blade
@@ -111,7 +119,9 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		irregularbow.addUnsafeEnchantment(Enchantment.ARROW_KNOCKBACK,4);
 
 		endermegaHead = new SlimefunItemStack("ENDERMEGA_HEAD","eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmJjZjNmNTc4NzE5NmQyNTZjMTA0ZmZmYWU4ZTUyNjUyNDIyMjJlMjEzOGE1N2ExNjY2YzE1YjVmNmM4N2I5OCJ9fX0=","&eEnder Mega Head","&7Purely decorational.");
-
+		//Multiblocks
+		DEEP_FREEZER = new RecipeType(new NamespacedKey(SlimefunPlugin.instance, "deepfreezer"), DEEPFREEZER);
+		new deepFreezer().register(this);
 
 
 
@@ -138,10 +148,6 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 
 		// Create a new Category
 		// This Category will use this ItemStack
-		NamespacedKey categoryId = new NamespacedKey(this, "ender_items");
-		CustomItem categoryItem = new CustomItem(Material.END_STONE, "&5Addon Jam: The End");
-
-		Category ender_category = new Category(categoryId, categoryItem);
 
 //Defining Items
 
@@ -183,11 +189,11 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 				null, new ItemStack(Material.END_STONE), null,
 				null, new ItemStack(Material.BLAZE_ROD), null
 		};
-		HasteItem endstoneHoeItem = new HasteItem(ender_category, endStoneHoe, RecipeType.ENHANCED_CRAFTING_TABLE, endstoneHoeRecipe); //endstone tools
-		HasteItem endstoneShovelItem = new HasteItem(ender_category, endStoneShovel, RecipeType.ENHANCED_CRAFTING_TABLE, endstoneShovelRecipe);
-		HasteItem endstoneAxeItem = new HasteItem(ender_category, endStoneAxe, RecipeType.ENHANCED_CRAFTING_TABLE, endstoneAxeRecipe);
-		HasteItem endstonePickaxeItem = new HasteItem(ender_category, endStonePickaxe, RecipeType.ENHANCED_CRAFTING_TABLE, endstonePickaxeRecipe);
-		HasteItem endstoneSwordItem = new HasteItem(ender_category, endStoneSword, RecipeType.ENHANCED_CRAFTING_TABLE, endstoneSwordRecipe);
+		HasteItem endstoneHoeItem = new HasteItem(enderCategory, endStoneHoe, RecipeType.ENHANCED_CRAFTING_TABLE, endstoneHoeRecipe); //endstone tools
+		HasteItem endstoneShovelItem = new HasteItem(enderCategory, endStoneShovel, RecipeType.ENHANCED_CRAFTING_TABLE, endstoneShovelRecipe);
+		HasteItem endstoneAxeItem = new HasteItem(enderCategory, endStoneAxe, RecipeType.ENHANCED_CRAFTING_TABLE, endstoneAxeRecipe);
+		HasteItem endstonePickaxeItem = new HasteItem(enderCategory, endStonePickaxe, RecipeType.ENHANCED_CRAFTING_TABLE, endstonePickaxeRecipe);
+		HasteItem endstoneSwordItem = new HasteItem(enderCategory, endStoneSword, RecipeType.ENHANCED_CRAFTING_TABLE, endstoneSwordRecipe);
 		endstoneAxeItem.register(this);
 		endstonePickaxeItem.register(this);
 		endstoneShovelItem.register(this);
@@ -221,7 +227,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 				SlimefunItems.ENDER_LUMP_2, SlimefunItems.MAGICAL_BOOK_COVER, SlimefunItems.ENDER_LUMP_2,
 				SlimefunItems.ENDER_LUMP_2, null, SlimefunItems.ENDER_LUMP_2
 		};
-		SlimefunItem Obsidian_Shield_item = new SlimefunItem(ender_category, Obsidian_Shield, RecipeType.ENHANCED_CRAFTING_TABLE, Obsidian_Shield_recipe);
+		SlimefunItem Obsidian_Shield_item = new SlimefunItem(enderCategory, Obsidian_Shield, RecipeType.ENHANCED_CRAFTING_TABLE, Obsidian_Shield_recipe);
 		Obsidian_Shield_item.register(this);
 		ItemStack[] Ender_Crossbow_recipe = {
 				SlimefunItems.RUNE_ENDER, SlimefunItems.RUNE_ENDER, SlimefunItems.RUNE_ENDER,
@@ -229,11 +235,11 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 				SlimefunItems.RUNE_ENDER, SlimefunItems.RUNE_ENDER, SlimefunItems.RUNE_ENDER
 		};
 
-		EnderStaff endStaff = new EnderStaff(ender_category, end_staff, RecipeType.MAGIC_WORKBENCH, enderStaff_recipe);
+		EnderStaff endStaff = new EnderStaff(enderCategory, end_staff, RecipeType.MAGIC_WORKBENCH, enderStaff_recipe);
 	endStaff.register(this);
-		LevitationTome Levitation_Tome_item = new LevitationTome(ender_category, Levitation_Tome, RecipeType.MOB_DROP, shulkerHead);
+		LevitationTome Levitation_Tome_item = new LevitationTome(enderCategory, Levitation_Tome, RecipeType.MOB_DROP, shulkerHead);
 		Levitation_Tome_item.register(this);
-		GroundTome Ground_Tome_item = new GroundTome(ender_category, Ground_Tome, RecipeType.MAGIC_WORKBENCH, Ground_Tome_recipe);
+		GroundTome Ground_Tome_item = new GroundTome(enderCategory, Ground_Tome, RecipeType.MAGIC_WORKBENCH, Ground_Tome_recipe);
 		Ground_Tome_item.register(this);
 		ItemStack[] shulkerBow_recipe = {
 				null, SlimefunItems.STAFF_ELEMENTAL, new ItemStack(Material.CHORUS_FRUIT),
@@ -244,7 +250,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		shulker_bow.register(this);
 		EnderBow ender_crossbow_item = new EnderBow(ender_crossbow,Ender_Crossbow_recipe); //Ender Crossbow
 		ender_crossbow_item.register(this);
-		TrappedShulker Trapped_ShulkerBox_item = new TrappedShulker(ender_category, Trapped_ShulkerBox, RecipeType.MOB_DROP, shulkerHead); //Trapped Shulker Box
+		TrappedShulker Trapped_ShulkerBox_item = new TrappedShulker(enderCategory, Trapped_ShulkerBox, RecipeType.MOB_DROP, shulkerHead); //Trapped Shulker Box
 		Trapped_ShulkerBox_item.register(this);
 // End Bars & Fragments
 
@@ -253,7 +259,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 				new ItemStack(Material.END_STONE), new ItemStack(Material.CHORUS_FRUIT), new ItemStack(Material.END_STONE),
 				SlimefunItems.ENDER_LUMP_3, new ItemStack(Material.END_STONE), SlimefunItems.ENDER_LUMP_3
 		};
-		SlimefunItem EndFragment_item = new SlimefunItem(ender_category, EndFragment, RecipeType.COMPRESSOR, EndFragment_recipe);
+		SlimefunItem EndFragment_item = new SlimefunItem(enderCategory, EndFragment, RecipeType.COMPRESSOR, EndFragment_recipe);
 		EndFragment_item.register(this); //End Fragment
 		ItemStack[] FrozenBar1_recipe = {
 				SlimefunItems.GOLD_24K, EndFragment, null,
@@ -270,39 +276,39 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 				null, null, null, 
 				null, null, null,
 		};
-		//SlimefunItem DragonBreathAlt_Recipe = new SlimefunItem(ender_category, (SlimefunItemStack) new ItemStack(Material.DRAGON_BREATH), RecipeType.GRIND_STONE, DragonBreath_Recipe);
+		//SlimefunItem DragonBreathAlt_Recipe = new SlimefunItem(enderCategory, (SlimefunItemStack) new ItemStack(Material.DRAGON_BREATH), RecipeType.GRIND_STONE, DragonBreath_Recipe);
 		//DragonBreathAlt_Recipe.register(this);
-		SlimefunItem CompressedEndFragment_Item = new SlimefunItem(ender_category, Compressed_EndFragment, RecipeType.COMPRESSOR, CompressedEndFragment_recipe);
+		SlimefunItem CompressedEndFragment_Item = new SlimefunItem(enderCategory, Compressed_EndFragment, RecipeType.COMPRESSOR, CompressedEndFragment_recipe);
 		CompressedEndFragment_Item.register(this); //compressed end fragment
-		SlimefunItem FrozenBar1_item = new SlimefunItem(ender_category, FrozenBar_1, RecipeType.PRESSURE_CHAMBER, FrozenBar1_recipe);
+		SlimefunItem FrozenBar1_item = new SlimefunItem(enderCategory, FrozenBar_1, RecipeType.PRESSURE_CHAMBER, FrozenBar1_recipe);
 		FrozenBar1_item.register(this); //Frozen Bar (33%)
 		ItemStack[] FrozenBar2_recipe = {
 				null, new ItemStack(Material.SHULKER_SHELL), null,
 				new ItemStack(Material.SHULKER_SHELL), FrozenBar_1, new ItemStack(Material.SHULKER_SHELL),
 				null, new ItemStack(Material.SHULKER_SHELL), null
 		};
-		SlimefunItem FrozenBar2_item = new SlimefunItem(ender_category, FrozenBar_2, RecipeType.PRESSURE_CHAMBER, FrozenBar2_recipe);
+		SlimefunItem FrozenBar2_item = new SlimefunItem(enderCategory, FrozenBar_2, DEEP_FREEZER, FrozenBar2_recipe);
 		FrozenBar2_item.register(this); //Frozen Bar (66%)
 		ItemStack[] FrozenBar_Full_recipe = {
 				new ItemStack(Material.DRAGON_BREATH), new ItemStack(Material.DRAGON_BREATH), new ItemStack(Material.DRAGON_BREATH),
 				new ItemStack(Material.DRAGON_BREATH), FrozenBar_2, new ItemStack(Material.DRAGON_BREATH),
 				new ItemStack(Material.DRAGON_BREATH), new ItemStack(Material.DRAGON_BREATH), new ItemStack(Material.DRAGON_BREATH)
 		};
-		SlimefunItem FrozenBar_Full_item = new SlimefunItem(ender_category, FrozenBar_Full, RecipeType.PRESSURE_CHAMBER, FrozenBar_Full_recipe);
+		SlimefunItem FrozenBar_Full_item = new SlimefunItem(enderCategory, FrozenBar_Full, DEEP_FREEZER, FrozenBar_Full_recipe);
 		FrozenBar_Full_item.register(this); //Frozen Bar (Full)
 		ItemStack[] Blistering_Blade_recipe = {
 				null, SlimefunItems.BLISTERING_INGOT_3, null,
 				null, SlimefunItems.BLISTERING_INGOT_3, null,
 				null, new ItemStack(Material.STICK), null,
 		};
-		RadioactiveWeapon Blistering_Blade_item = new RadioactiveWeapon(ender_category, Blistering_Blade, RecipeType.ENHANCED_CRAFTING_TABLE, Blistering_Blade_recipe);
+		RadioactiveWeapon Blistering_Blade_item = new RadioactiveWeapon(enderCategory, Blistering_Blade, RecipeType.ENHANCED_CRAFTING_TABLE, Blistering_Blade_recipe);
 		Blistering_Blade_item.register(this); //Blistering Blade
 		ItemStack[] Freezing_Blade_recipe = {
 				null, FrozenBar_Full, null,
 				null, FrozenBar_Full, null,
 				null, new ItemStack(Material.STICK), null,
 		};
-		SlimefunItem Freezing_Blade_item = new SlimefunItem(ender_category, Freezing_Blade, RecipeType.ENHANCED_CRAFTING_TABLE, Freezing_Blade_recipe);
+		SlimefunItem Freezing_Blade_item = new SlimefunItem(enderCategory, Freezing_Blade, DEEP_FREEZER, Freezing_Blade_recipe);
 		Freezing_Blade_item.register(this); //Freezing Blade
 		ItemStack[] endermegaEggRecipe = {
 				SlimefunItems.RUNE_ENDER, SlimefunItems.ENDER_LUMP_3, SlimefunItems.RUNE_ENDER,
@@ -314,31 +320,31 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 				null, Blistering_Blade, null,
 				null, new ItemStack(Material.STICK), null,
 		};
-		RadioactiveWeapon Equilibrium_Blade_item = new RadioactiveWeapon(ender_category, Equal_Blade, RecipeType.ENHANCED_CRAFTING_TABLE, Equilibrium_Blade_recipe);
+		RadioactiveWeapon Equilibrium_Blade_item = new RadioactiveWeapon(enderCategory, Equal_Blade, DEEP_FREEZER, Equilibrium_Blade_recipe);
 		Equilibrium_Blade_item.isDisenchantable();
 		Equilibrium_Blade_item.register(this); //Equilibrium
 
 		//Endermega stuff
 
-		BossEgg endermegaEggItem = new BossEgg(ender_category, endermegaEgg, RecipeType.ANCIENT_ALTAR, endermegaEggRecipe);
+		BossEgg endermegaEggItem = new BossEgg(enderCategory, endermegaEgg, RecipeType.ANCIENT_ALTAR, endermegaEggRecipe);
 		endermegaEggItem.register(this);
 
-		SlimefunItem endermegaHelmetItem = new SlimefunItem(ender_category, endermegaHelmet, BOSS_DROP, endermegaDrop); //endermega set
+		SlimefunItem endermegaHelmetItem = new SlimefunItem(enderCategory, endermegaHelmet, BOSS_DROP, endermegaDrop); //endermega set
 		endermegaHelmetItem.register(this);
-		SlimefunItem endermegaChestplateItem = new SlimefunItem(ender_category, endermegaChestplate, BOSS_DROP, endermegaDrop);
+		SlimefunItem endermegaChestplateItem = new SlimefunItem(enderCategory, endermegaChestplate, BOSS_DROP, endermegaDrop);
 		endermegaChestplateItem.register(this);
-		SlimefunItem endermegaLeggingsItem = new SlimefunItem(ender_category, endermegaLeggings, BOSS_DROP, endermegaDrop);
+		SlimefunItem endermegaLeggingsItem = new SlimefunItem(enderCategory, endermegaLeggings, BOSS_DROP, endermegaDrop);
 		endermegaLeggingsItem.register(this);
-		SlimefunItem endermegaBootsItem = new SlimefunItem(ender_category, endermegaBoots, BOSS_DROP, endermegaDrop);
+		SlimefunItem endermegaBootsItem = new SlimefunItem(enderCategory, endermegaBoots, BOSS_DROP, endermegaDrop);
 		endermegaBootsItem.register(this);
-		EnderStaff2 enderstaffTier2Item = new EnderStaff2(ender_category, enderstaffTier2, BOSS_DROP, endermegaDrop); //ender staff tier 2
+		EnderStaff2 enderstaffTier2Item = new EnderStaff2(enderCategory, enderstaffTier2, BOSS_DROP, endermegaDrop); //ender staff tier 2
 		enderstaffTier2Item.register(this);
-		EnderBlade enderBladeItem = new EnderBlade(ender_category, enderBlade, BOSS_DROP, endermegaDrop); //ender blade
+		EnderBlade enderBladeItem = new EnderBlade(enderCategory, enderBlade, BOSS_DROP, endermegaDrop); //ender blade
 		enderBladeItem.register(this);
-		SlimefunItem enderHeadItem = new SlimefunItem(ender_category, endermegaHead, BOSS_DROP, endermegaDrop); //ender head
+		SlimefunItem enderHeadItem = new SlimefunItem(enderCategory, endermegaHead, BOSS_DROP, endermegaDrop); //ender head
 		enderHeadItem.register(this);
-		SlimefunItem irregularBowItem = new SlimefunItem(ender_category, irregularbow, BOSS_DROP, endermegaDrop);
-		enderHeadItem.register(this); //irregular bow
+		SlimefunItem irregularBowItem = new SlimefunItem(enderCategory, irregularbow, BOSS_DROP, endermegaDrop);
+		irregularBowItem.register(this); //irregular bow
 		//Research
 		NamespacedKey ender_fragments_research_id = new NamespacedKey(this, "ender_fragments_r"); 
 		Research ender_fragments_research = new Research(ender_fragments_research_id, 425989, "Ender Fragments", 13);
@@ -374,6 +380,21 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		Research endermegaResearch = new Research(endermegaID, 425995, "Battling Endermega", 34);
 		endermegaResearch.addItems(endermegaBootsItem,endermegaLeggingsItem,endermegaChestplateItem,endermegaHelmetItem,endermegaEggItem,enderstaffTier2Item,enderBladeItem,enderHeadItem,irregularBowItem);
 		endermegaResearch.register();
+
+		NamespacedKey deepfreezerID = new NamespacedKey(this, "deepfreezer_research");
+		Research deepfreezerResearch = new Research(deepfreezerID, 425996, "Harnessing Extreme Cold", 30);
+		deepfreezerResearch.addItems(SlimefunItem.getByItem(DEEPFREEZER)); //Deep freezer research
+		deepfreezerResearch.register();
+
+		NamespacedKey obsidianID = new NamespacedKey(this, "obsidian_shield_research");
+		Research obsidianShieldResearch = new Research(obsidianID, 425997, "Obsidian Shield", 18);
+		obsidianShieldResearch.addItems(Obsidian_Shield_item); //Obsidian Shield
+		obsidianShieldResearch.register();
+
+		NamespacedKey intenseGravityID = new NamespacedKey(this, "intensify_gravity_research");
+		Research intenseGravityResearch = new Research(obsidianID, 425997, "Modifying Gravity", 20);
+		intenseGravityResearch.addItems(Ground_Tome_item); //Ground Tome
+		intenseGravityResearch.register();
 	}
 
 
@@ -386,7 +407,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 	@Override
 	public String getBugTrackerURL() {
 		// You can return a link to your Bug Tracker instead of null here
-		return null;
+		return "https://github.com/Gavin296/end-combat/issues";
 	}
 
 	@Override

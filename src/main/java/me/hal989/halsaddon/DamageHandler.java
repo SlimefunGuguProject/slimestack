@@ -43,7 +43,7 @@ public class DamageHandler implements Listener {
                         zposition *= -1; //same for z
                     }
                     p.teleport(new Location(p.getWorld(), p.getLocation().getX() + xposition, p.getLocation().getY(), p.getLocation().getZ() + zposition, p.getLocation().getYaw(), p.getLocation().getPitch()));
-                    p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
+                    p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1); //sound
                 }
 
             }
@@ -52,17 +52,17 @@ public class DamageHandler implements Listener {
 
         }
         else if(e.getEntityType().equals(EntityType.ENDERMAN)){
-            if (e.getEntity().getCustomName().equals(ChatColors.color("&5Endermega"))){
+            if (e.getEntity().getCustomName().equals(ChatColors.color("&5Endermega"))){ //endermega abilities
 
 
             Location loc = e.getEntity().getLocation();
             Enderman enderman = (Enderman) e.getEntity();
-            enderman.setCarriedBlock(null);
+            enderman.setCarriedBlock(null); //because it looks weird
             double RNG = Math.random();
             if (RNG>=0.1&&RNG<0.5) {
                 enderman.getWorld().playSound(enderman.getLocation(), Sound.BLOCK_BEACON_DEACTIVATE, 1, 2);
                 Endermite endermite = (Endermite) loc.getWorld().spawnEntity(loc, EntityType.ENDERMITE);
-                endermite.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000, 3));
+                endermite.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000, 3));//yay endermites
                 endermite.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 10000, 2));
                 endermite.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 100, 1));
             }
@@ -70,14 +70,14 @@ public class DamageHandler implements Listener {
             RNG = Math.random();
                 if (RNG>=0.3&&RNG<0.5) {
                     enderman.getWorld().playSound(enderman.getLocation(), Sound.BLOCK_BEACON_DEACTIVATE, 1, 2);
-                    Endermite endermite = (Endermite) loc.getWorld().spawnEntity(loc, EntityType.ENDERMITE);
+                    Endermite endermite = (Endermite) loc.getWorld().spawnEntity(loc, EntityType.ENDERMITE); //bonus chance for endermites when enraged
                     endermite.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000, 3));
                     endermite.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 10000, 2));
                     endermite.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 100, 1));
                 }
                 if (RNG>0.6&&RNG<0.7){
                     enderman.getWorld().playSound(enderman.getLocation(), Sound.BLOCK_BEACON_POWER_SELECT, 1, 1);
-                    enderman.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 60, 1));
+                    enderman.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 60, 1)); //special attack #2
                     enderman.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 60, 200));
                     enderman.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 60, -1));
                     enderman.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 60, -1));
@@ -88,7 +88,7 @@ public class DamageHandler implements Listener {
                     isEndermegaEnraged = true;
                     for (Entity n : enderman.getNearbyEntities(10.0, 10.0, 10.0)) {
                         if (n instanceof LivingEntity && (n instanceof Player)) {
-                            n.sendMessage(ChatColor.translateAlternateColorCodes('&', "&5Endermega &ehas become &4enraged!"));
+                            n.sendMessage(ChatColor.translateAlternateColorCodes('&', "&5Endermega &ehas become &4enraged!")); //alert everyone fighting it only once
 
                         }
                     }

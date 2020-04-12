@@ -18,19 +18,19 @@ public class TeleportHandler implements Listener {
     }
     @EventHandler
     public void onTeleport(EntityTeleportEvent e) {
-        if (e.getEntity().getCustomName().equals(ChatColors.color("&5Endermega"))){
+        if (e.getEntity().getCustomName().equals(ChatColors.color("&5Endermega"))){ //endermega abilities
             Location loc = e.getEntity().getLocation();
             Endermite endermite = (Endermite) loc.getWorld().spawnEntity(loc, EntityType.ENDERMITE);
-            endermite.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000, 4));
+            endermite.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000, 4)); //endermite 1
             endermite.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 10000, 2));
             endermite.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 100, 1));
             Endermite endermite2 = (Endermite) loc.getWorld().spawnEntity(loc, EntityType.ENDERMITE);
-            endermite2.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000, 4));
+            endermite2.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000, 4)); //endermite #2
             endermite.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 10000, 2));
             endermite.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 100, 1));
             e.getEntity().setFireTicks(0);
             Enderman enderman = (Enderman) e.getEntity();
-            enderman.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE,20,200));
+            enderman.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE,20,200)); //1 second of inviciblity
 
 
         }
