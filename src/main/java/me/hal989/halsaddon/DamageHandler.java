@@ -51,7 +51,9 @@ public class DamageHandler implements Listener {
 
 
         }
-        else {if (e.getEntity().getCustomName().equals(ChatColors.color("&5Endermega"))){
+        else if(e.getEntityType().equals(EntityType.ENDERMAN)){
+            if (e.getEntity().getCustomName().equals(ChatColors.color("&5Endermega"))){
+
 
             Location loc = e.getEntity().getLocation();
             Enderman enderman = (Enderman) e.getEntity();
