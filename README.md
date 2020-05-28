@@ -1,7 +1,10 @@
-# A slimefun4 Addon for the Addon Jam 2020 Contest
-
-This addon will spice up combat by adding a variety of end-themed weapons, and other combat tools!
+# A slimefun4 Addon 
 
 (Made by HAL989)
-
-Currently features 10+ items
+This addon will help spice up your slimefun4 playthroughs by adding: 
+1 new boss (More soon)
+5+ new weapons
+A variety of new resources and multiblocks
+New rare drops from mobs
+New endgame weapons
+A new set of armor
