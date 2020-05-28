@@ -15,3 +15,5 @@ New rare drops from mobs
 New endgame weapons
 
 A new set of armor
+
+A way to renewably make spawn eggs
