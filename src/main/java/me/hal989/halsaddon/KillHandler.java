@@ -1,15 +1,25 @@
 package me.hal989.halsaddon;
 
-import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
-import me.mrCookieSlime.Slimefun.cscorelib2.chat.ChatColors;
+import static me.hal989.halsaddon.HALsAddon.Levitation_Tome;
+import static me.hal989.halsaddon.HALsAddon.Trapped_ShulkerBox;
+import static me.hal989.halsaddon.HALsAddon.enderBlade;
+import static me.hal989.halsaddon.HALsAddon.endermegaBoots;
+import static me.hal989.halsaddon.HALsAddon.endermegaChestplate;
+import static me.hal989.halsaddon.HALsAddon.endermegaHead;
+import static me.hal989.halsaddon.HALsAddon.endermegaHelmet;
+import static me.hal989.halsaddon.HALsAddon.endermegaLeggings;
+import static me.hal989.halsaddon.HALsAddon.enderstaffTier2;
+import static me.hal989.halsaddon.HALsAddon.irregularbow;
+import static me.hal989.halsaddon.HALsAddon.isEndermegaEnraged;
+
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.plugin.Plugin;
 
-import static me.hal989.halsaddon.HALsAddon.*;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import me.mrCookieSlime.Slimefun.cscorelib2.chat.ChatColors;
 
 public class KillHandler implements Listener {
     public KillHandler(Plugin plugin) {
@@ -17,7 +27,6 @@ public class KillHandler implements Listener {
     }
     @EventHandler
     public void onKill(EntityDeathEvent e) {
-        Player killer = e.getEntity().getKiller();
         if (e.getEntityType() == EntityType.SHULKER){
             e.getDrops().remove(Trapped_ShulkerBox);
             e.getDrops().remove(Levitation_Tome);

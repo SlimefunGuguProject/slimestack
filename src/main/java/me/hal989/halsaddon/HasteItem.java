@@ -1,12 +1,11 @@
 package me.hal989.halsaddon;
 
-import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.Objects.handlers.ItemUseHandler;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import static me.hal989.halsaddon.HALsAddon.endStoneAxe;
+import static me.hal989.halsaddon.HALsAddon.endStoneHoe;
+import static me.hal989.halsaddon.HALsAddon.endStonePickaxe;
+import static me.hal989.halsaddon.HALsAddon.endStoneShovel;
+import static me.hal989.halsaddon.HALsAddon.endStoneSword;
+
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
@@ -14,7 +13,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import static me.hal989.halsaddon.HALsAddon.*;
+import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
+import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import me.mrCookieSlime.Slimefun.Lists.RecipeType;
+import me.mrCookieSlime.Slimefun.Objects.Category;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 
 public class HasteItem extends SlimefunItem {
     public HasteItem(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {

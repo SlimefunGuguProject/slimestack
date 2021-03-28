@@ -1,15 +1,17 @@
 package me.hal989.halsaddon;
 
-import io.github.thebusybiscuit.slimefun4.implementation.items.weapons.SlimefunBow;
-import me.mrCookieSlime.Slimefun.Objects.handlers.BowShootHandler;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.thebusybiscuit.slimefun4.core.handlers.BowShootHandler;
+import io.github.thebusybiscuit.slimefun4.implementation.items.weapons.SlimefunBow;
+import me.mrCookieSlime.Slimefun.Objects.Category;
+import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+
 public class IrregularBow extends SlimefunBow {
-    public IrregularBow(SlimefunItemStack item, ItemStack[] recipe) {
-        super(item, recipe);
+    public IrregularBow(Category category, SlimefunItemStack item, ItemStack[] recipe) {
+        super(category, item, recipe);
     }
     @Override
     public BowShootHandler onShoot() {

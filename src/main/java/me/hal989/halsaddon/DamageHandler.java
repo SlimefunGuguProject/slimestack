@@ -1,12 +1,20 @@
 package me.hal989.halsaddon;
 
-import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
-import me.mrCookieSlime.Slimefun.api.Slimefun;
-import me.mrCookieSlime.Slimefun.cscorelib2.chat.ChatColors;
+import static me.hal989.halsaddon.HALsAddon.endermegaBoots;
+import static me.hal989.halsaddon.HALsAddon.endermegaChestplate;
+import static me.hal989.halsaddon.HALsAddon.endermegaHelmet;
+import static me.hal989.halsaddon.HALsAddon.endermegaLeggings;
+import static me.hal989.halsaddon.HALsAddon.isEndermegaEnraged;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
-import org.bukkit.entity.*;
+import org.bukkit.entity.Enderman;
+import org.bukkit.entity.Endermite;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -15,7 +23,8 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import static me.hal989.halsaddon.HALsAddon.*;
+import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
+import me.mrCookieSlime.Slimefun.cscorelib2.chat.ChatColors;
 
 public class DamageHandler implements Listener {
     public DamageHandler(Plugin plugin) {
@@ -33,7 +42,7 @@ public class DamageHandler implements Listener {
 
             if ((SlimefunUtils.isItemSimilar(boots, endermegaBoots, true))&&(SlimefunUtils.isItemSimilar(leggings, endermegaLeggings, true))&& //checking if endermega
                     (SlimefunUtils.isItemSimilar(chestplate, endermegaChestplate, true))&&(SlimefunUtils.isItemSimilar(helmet, endermegaHelmet, true))) {
-                if (Slimefun.hasUnlocked(p, endermegaHelmet, true)) { //is it unlocked?
+                if (endermegaHelmet.getItem().canUse(p, true)) { //is it unlocked?
                     double xposition = (Math.random() * ((8) + 1)) + 0; //time to teleport
                     double zposition = (Math.random() * ((8) + 1)) + 0;
                     if (Math.random() > 0.5) {

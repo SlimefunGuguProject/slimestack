@@ -1,25 +1,25 @@
 package me.hal989.halsaddon;
 
-import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactivity;
-import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.Research;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.SlimefunPlugin;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.mrCookieSlime.Slimefun.bstats.bukkit.Metrics;
-import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
-import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
-import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
+import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactivity;
+import io.github.thebusybiscuit.slimefun4.core.researching.Research;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
+import me.mrCookieSlime.Slimefun.Lists.RecipeType;
+import me.mrCookieSlime.Slimefun.Objects.Category;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
+import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
+import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
+import me.mrCookieSlime.bstats.bukkit.Metrics;
 
 public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 	public static SlimefunItemStack Trapped_ShulkerBox;
@@ -92,7 +92,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		endStoneSword = new SlimefunItemStack("ENDSTONE_SWORD", Material.GOLDEN_SWORD, "&fEndstone Sword", "","&e Shift + Right Click &f- Pay an ender lump","&fto restore 2 durability to the sword.");
 		endStoneAxe = new SlimefunItemStack("ENDSTONE_AXE", Material.GOLDEN_AXE, "&fEndstone Axe", "","&e Shift + Right Click &f- Pay an ender lump","&fto restore 2 durability to the axe.");
 		endStoneHoe = new SlimefunItemStack("ENDSTONE_HOE", Material.GOLDEN_HOE, "&fEndstone Hoe", "","&e Shift + Right Click &f- Pay an ender lump","&fto restore 2 durability to the hoe.");
-		BOSS_DROP = new RecipeType(new NamespacedKey(SlimefunPlugin.instance, "boss_drop"), new CustomItem(Material.DIAMOND_SWORD, "&cBoss Drop"), null, "", "&rKill the specified Boss for a chance to obtain this Item");
+		BOSS_DROP = new RecipeType(new NamespacedKey(this, "boss_drop"), new CustomItem(Material.DIAMOND_SWORD, "&cBoss Drop"), null, "", "&rKill the specified Boss for a chance to obtain this Item");
 
 		//Endermega drops
 		endermegaHelmet = new SlimefunItemStack("ENDERMEGA_HELMET",Material.LEATHER_HELMET, Color.BLACK,"&5Endermega Helmet","","&5Endermega&d's power flows through this set...","","&bSet bonus: Teleport when hit");
@@ -120,7 +120,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 
 		endermegaHead = new SlimefunItemStack("ENDERMEGA_HEAD","eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmJjZjNmNTc4NzE5NmQyNTZjMTA0ZmZmYWU4ZTUyNjUyNDIyMjJlMjEzOGE1N2ExNjY2YzE1YjVmNmM4N2I5OCJ9fX0=","&eEnder Mega Head","&7Purely decorational.");
 		//Multiblocks
-		DEEP_FREEZER = new RecipeType(new NamespacedKey(SlimefunPlugin.instance, "deepfreezer"), DEEPFREEZER);
+		DEEP_FREEZER = new RecipeType(new NamespacedKey(this, "deepfreezer"), DEEPFREEZER);
 		new deepFreezer().register(this);
 
 
@@ -157,7 +157,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 
 // Recipes
 		ItemStack[] enderStaff_recipe = {
-				null, null, SlimefunItems.RUNE_ENDER,
+				null, null, SlimefunItems.ENDER_RUNE,
 				null, SlimefunItems.STAFF_ELEMENTAL, null,
 				SlimefunItems.STAFF_ELEMENTAL, null, null
 		};
@@ -200,11 +200,9 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		endstoneHoeItem.register(this);
 		endstoneSwordItem.register(this);
 
-		ItemStack[] Trapped_ShulkerBox_recipe = {
-				null, null, null,
-				new ItemStack(Material.REDSTONE_BLOCK), new ItemStack(Material.SHULKER_BOX), new ItemStack(Material.TRIPWIRE_HOOK), //former trapped shulker box recipe
-				null, null, null
-		};
+		new ItemStack(Material.REDSTONE_BLOCK);
+		new ItemStack(Material.SHULKER_BOX);
+		new ItemStack(Material.TRIPWIRE_HOOK);
 
 		ItemStack[] Obsidian_Shield_recipe = {
 				new ItemStack(Material.OBSIDIAN), new ItemStack(Material.OBSIDIAN), new ItemStack(Material.OBSIDIAN),
@@ -230,9 +228,9 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		SlimefunItem Obsidian_Shield_item = new SlimefunItem(enderCategory, Obsidian_Shield, RecipeType.ENHANCED_CRAFTING_TABLE, Obsidian_Shield_recipe);
 		Obsidian_Shield_item.register(this);
 		ItemStack[] Ender_Crossbow_recipe = {
-				SlimefunItems.RUNE_ENDER, SlimefunItems.RUNE_ENDER, SlimefunItems.RUNE_ENDER,
-				SlimefunItems.RUNE_ENDER, new ItemStack(Material.CROSSBOW), SlimefunItems.RUNE_ENDER,
-				SlimefunItems.RUNE_ENDER, SlimefunItems.RUNE_ENDER, SlimefunItems.RUNE_ENDER
+				SlimefunItems.ENDER_RUNE, SlimefunItems.ENDER_RUNE, SlimefunItems.ENDER_RUNE,
+				SlimefunItems.ENDER_RUNE, new ItemStack(Material.CROSSBOW), SlimefunItems.ENDER_RUNE,
+				SlimefunItems.ENDER_RUNE, SlimefunItems.ENDER_RUNE, SlimefunItems.ENDER_RUNE
 		};
 
 		EnderStaff endStaff = new EnderStaff(enderCategory, end_staff, RecipeType.MAGIC_WORKBENCH, enderStaff_recipe);
@@ -246,9 +244,9 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 				end_staff, null, new ItemStack(Material.CHORUS_FRUIT),
 				null, SlimefunItems.STAFF_ELEMENTAL, new ItemStack(Material.CHORUS_FRUIT)
 		};
-		ShulkerBow shulker_bow = new ShulkerBow(levitation_bow,shulkerBow_recipe); //Shulker Bow
+		ShulkerBow shulker_bow = new ShulkerBow(enderCategory, levitation_bow,shulkerBow_recipe); //Shulker Bow
 		shulker_bow.register(this);
-		EnderBow ender_crossbow_item = new EnderBow(ender_crossbow,Ender_Crossbow_recipe); //Ender Crossbow
+		EnderBow ender_crossbow_item = new EnderBow(enderCategory, ender_crossbow,Ender_Crossbow_recipe); //Ender Crossbow
 		ender_crossbow_item.register(this);
 		TrappedShulker Trapped_ShulkerBox_item = new TrappedShulker(enderCategory, Trapped_ShulkerBox, RecipeType.MOB_DROP, shulkerHead); //Trapped Shulker Box
 		Trapped_ShulkerBox_item.register(this);
@@ -269,11 +267,6 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		ItemStack[] CompressedEndFragment_recipe = { //compressed end fragment
 				EndFragment, EndFragment, null,
 				EndFragment, EndFragment, null,
-				null, null, null,
-		};
-		ItemStack[] DragonBreath_Recipe = {
-				Compressed_EndFragment, null, null, //scrapped recipe
-				null, null, null, 
 				null, null, null,
 		};
 		//SlimefunItem DragonBreathAlt_Recipe = new SlimefunItem(enderCategory, (SlimefunItemStack) new ItemStack(Material.DRAGON_BREATH), RecipeType.GRIND_STONE, DragonBreath_Recipe);
@@ -311,9 +304,9 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		SlimefunItem Freezing_Blade_item = new SlimefunItem(enderCategory, Freezing_Blade, DEEP_FREEZER, Freezing_Blade_recipe);
 		Freezing_Blade_item.register(this); //Freezing Blade
 		ItemStack[] endermegaEggRecipe = {
-				SlimefunItems.RUNE_ENDER, SlimefunItems.ENDER_LUMP_3, SlimefunItems.RUNE_ENDER,
+				SlimefunItems.ENDER_RUNE, SlimefunItems.ENDER_LUMP_3, SlimefunItems.ENDER_RUNE,
 				EndFragment, new ItemStack(Material.EGG), EndFragment,
-				SlimefunItems.RUNE_ENDER, SlimefunItems.ENDER_LUMP_3, SlimefunItems.RUNE_ENDER,
+				SlimefunItems.ENDER_RUNE, SlimefunItems.ENDER_LUMP_3, SlimefunItems.ENDER_RUNE,
 		};
 		ItemStack[] Equilibrium_Blade_recipe = {
 				null, Freezing_Blade, null,
@@ -391,7 +384,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		obsidianShieldResearch.addItems(Obsidian_Shield_item); //Obsidian Shield
 		obsidianShieldResearch.register();
 
-		NamespacedKey intenseGravityID = new NamespacedKey(this, "intensify_gravity_research");
+		new NamespacedKey(this, "intensify_gravity_research");
 		Research intenseGravityResearch = new Research(obsidianID, 425997, "Modifying Gravity", 20);
 		intenseGravityResearch.addItems(Ground_Tome_item); //Ground Tome
 		intenseGravityResearch.register();
