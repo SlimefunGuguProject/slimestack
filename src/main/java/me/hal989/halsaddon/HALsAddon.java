@@ -19,7 +19,6 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
-import me.mrCookieSlime.bstats.bukkit.Metrics;
 
 public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 	public static SlimefunItemStack Trapped_ShulkerBox;
@@ -139,8 +138,6 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
 		// You can use bStats to collect usage data about your plugin
 		// More info: https://bstats.org/getting-started
 		// Set bStatsId to the id of your plugin
-		int bStatsId = -1;
-		new Metrics(this, bStatsId);
 		new KillHandler(this);
 		new TeleportHandler(this);
 		new DamageHandler(this);

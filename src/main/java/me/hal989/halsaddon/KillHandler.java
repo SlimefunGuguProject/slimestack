@@ -27,6 +27,7 @@ public class KillHandler implements Listener {
     }
     @EventHandler
     public void onKill(EntityDeathEvent e) {
+    	if(e.getEntity().getCustomName() == null) return;
         if (e.getEntityType() == EntityType.SHULKER){
             e.getDrops().remove(Trapped_ShulkerBox);
             e.getDrops().remove(Levitation_Tome);
