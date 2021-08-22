@@ -1,19 +1,19 @@
-# A slimefun4 Addon 
+# 终焉
 
-(Made by HAL989)
+(作者：HAL989)
 
-This addon will help spice up your slimefun4 playthroughs by adding: 
+由Lobbytech-MC适配 
 
-1 new boss (More soon)
+1 新boss
 
-5+ new weapons
+5+ 新武器
 
-A variety of new resources and multiblocks
+更多资源和多块机器
 
-New rare drops from mobs
+新的稀有掉落物
 
-New endgame weapons
+更多末地元素
 
-A new set of armor
+更多盔甲
 
-A way to renewably make spawn eggs
+
