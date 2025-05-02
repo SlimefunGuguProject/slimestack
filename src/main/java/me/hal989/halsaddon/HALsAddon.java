@@ -45,7 +45,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
     @Override
     public void onEnable() {
         NamespacedKey categoryId = new NamespacedKey(this, "ender_items");
-        CustomItemStack categoryItem = new CustomItemStack(Material.END_STONE, "&5末地拓展");
+        CustomItemStack categoryItem = new CustomItemStack(Material.END_STONE, "&5终界之地");
     
         enderItemGroup = new ItemGroup(categoryId, categoryItem);
         DEEPFREEZER = new SlimefunItemStack("DEEPFREEZER", Material.BLUE_ICE, "&b急冻机", "", "&a以极低温度冻结物品");
@@ -62,7 +62,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
         SlimefunItemStack Compressed_EndFragment = new SlimefunItemStack("COMPRESSED_END_FRAGMENT", Material.IRON_NUGGET, "&d压缩末影碎片");
         SlimefunItemStack FrozenBar_2 = new SlimefunItemStack("FROZEN_BAR_2", Material.IRON_INGOT, "&5冰冻锭 &d(66%)");
         SlimefunItemStack FrozenBar_Full = new SlimefunItemStack("FROZEN_BAR_FULL", Material.IRON_INGOT, "&5冰冻锭");
-        SlimefunItemStack Blistering_Blade = new SlimefunItemStack("BLISTERING_BLADE", Material.GOLDEN_SWORD, "&6灼烧之刃", "", LoreBuilder.radioactive(Radioactivity.VERY Deadly), LoreBuilder.HAZMAT_SUIT_REQUIRED);
+        SlimefunItemStack Blistering_Blade = new SlimefunItemStack("BLISTERING_BLADE", Material.GOLDEN_SWORD, "&6灼烧之刃", "", LoreBuilder.radioactive(Radioactivity.VERY_DEADLY), LoreBuilder.HAZMAT_SUIT_REQUIRED);
         Blistering_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 10);
         Blistering_Blade.addUnsafeEnchantment(Enchantment.FIRE_ASPECT, 4);
         Blistering_Blade.addUnsafeEnchantment(Enchantment.SWEEPING_EDGE, 3);
@@ -72,7 +72,7 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
         Freezing_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ARTHROPODS, 3);
         Freezing_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_UNDEAD, 3);
         Freezing_Blade.addUnsafeEnchantment(Enchantment.DURABILITY, 5); // 冰冻之刃
-        SlimefunItemStack Equal_Blade = new SlimefunItemStack("EQUILIBRIUM", Material.IRON_SWORD, "&9平衡之刃", "", "&f很少有人能获得这把剑，且几乎没人有能力挥舞它。", "", LoreBuilder.radioactive(Radioactivity.VERY Deadly), LoreBuilder.HAZMAT_SUIT_REQUIRED);
+        SlimefunItemStack Equal_Blade = new SlimefunItemStack("EQUILIBRIUM", Material.IRON_SWORD, "&9平衡之刃", "", "&f很少有人能获得这把剑，且几乎没人有能力挥舞它。", "", LoreBuilder.radioactive(Radioactivity.VERY_DEADLY), LoreBuilder.HAZMAT_SUIT_REQUIRED);
         Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 8);
         Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ARTHROPODS, 3);
         Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_UNDEAD, 3);
@@ -334,12 +334,12 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
         ender_fragments_research.register();
 
         NamespacedKey frozen_bars_research_id = new NamespacedKey(this, "frozen_bars_research");
-        Research frozen_bars_research = new Research(frozen_bars_research_id, 425990, "急冻条", 40);
+        Research frozen_bars_research = new Research(frozen_bars_research_id, 425990, "冰冻条", 40);
         frozen_bars_research.addItems(FrozenBar1_item, FrozenBar2_item, FrozenBar_Full_item);
         frozen_bars_research.register();
 
         NamespacedKey ShulkerBow_research_id = new NamespacedKey(this, "shulkerbow_research");
-        Research ShulkerBow_research = new Research(ShulkerBow_research_id, 425991, "潜影贝的弓", 20);
+        Research ShulkerBow_research = new Research(ShulkerBow_research_id, 425991, "潜影弓", 20);
         ShulkerBow_research.addItems(shulker_bow);
         ShulkerBow_research.register();
 
