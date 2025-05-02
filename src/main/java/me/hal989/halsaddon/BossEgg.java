@@ -44,7 +44,7 @@ public class BossEgg extends SlimefunItem {
             enderman.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 10000, 2));
             enderman.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 10000, 1));
             enderman.addPotionEffect(new PotionEffect(PotionEffectType.HEAL, 20, 200));
-            enderman.setCustomName(ChatColors.color("&5Endermega"));
+            enderman.setCustomName(ChatColors.color("&5末影巨兽"));
             if (p.getGameMode() != GameMode.CREATIVE) {
                 ItemUtils.consumeItem(event.getItem(), false);
             } //bye spawn egg (but not if in creative)

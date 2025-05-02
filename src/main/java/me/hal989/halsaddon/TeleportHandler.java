@@ -20,7 +20,7 @@ public class TeleportHandler implements Listener {
     @EventHandler
     public void onTeleport(EntityTeleportEvent e) {
         if (e.getEntity().getCustomName() == null) return;
-        if (e.getEntity().getCustomName().equals(ChatColors.color("&5Endermega"))) { //endermega abilities
+        if (e.getEntity().getCustomName().equals(ChatColors.color("&5末影巨兽"))) { //endermega abilities
             Location loc = e.getEntity().getLocation();
             Endermite endermite = (Endermite) loc.getWorld().spawnEntity(loc, EntityType.ENDERMITE);
             endermite.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000, 4)); //endermite 1
