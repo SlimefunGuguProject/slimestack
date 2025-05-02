@@ -1,12 +1,10 @@
 package me.hal989.halsaddon;
 
 
-import static me.hal989.halsaddon.HALsAddon.DEEPFREEZER;
-import static me.hal989.halsaddon.HALsAddon.enderCategory;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.core.multiblocks.MultiBlockMachine;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -17,10 +15,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.thebusybiscuit.slimefun4.core.multiblocks.MultiBlockMachine;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
-import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static me.hal989.halsaddon.HALsAddon.DEEPFREEZER;
+import static me.hal989.halsaddon.HALsAddon.enderCategory;
 
 public class deepFreezer extends MultiBlockMachine {
 
@@ -28,8 +27,8 @@ public class deepFreezer extends MultiBlockMachine {
         super(
                 enderCategory,
                 DEEPFREEZER,
-                new ItemStack[] {null, null, null, null, new ItemStack(Material.SNOW_BLOCK), null, new ItemStack(Material.PACKED_ICE), new ItemStack(Material.DISPENSER), new ItemStack(Material.PACKED_ICE)},
-                new ItemStack[] {
+                new ItemStack[]{null, null, null, null, new ItemStack(Material.SNOW_BLOCK), null, new ItemStack(Material.PACKED_ICE), new ItemStack(Material.DISPENSER), new ItemStack(Material.PACKED_ICE)},
+                new ItemStack[]{
                         new ItemStack(Material.ICE, 4), new ItemStack(Material.PACKED_ICE),
                         new ItemStack(Material.PACKED_ICE, 4), new ItemStack(Material.BLUE_ICE),
                         new ItemStack(Material.SNOWBALL, 8), new ItemStack(Material.SNOW)
@@ -62,8 +61,7 @@ public class deepFreezer extends MultiBlockMachine {
                         inv.removeItem(removing);
 
                         craft(p, output, outputInv);
-                    }
-                    else {
+                    } else {
                         SlimefunPlugin.getLocalization().sendMessage(p, "machines.full-inventory", true);
                     }
 
@@ -81,9 +79,8 @@ public class deepFreezer extends MultiBlockMachine {
 
             Bukkit.getScheduler().runTaskLater(SlimefunPlugin.instance(), () -> {
                 if (j < 3) {
-                    p.getWorld().playSound(p.getLocation(), j == 1 ?  Sound.ITEM_ARMOR_EQUIP_DIAMOND : Sound.ITEM_ARMOR_EQUIP_TURTLE, 1F, j == 0 ? 1F : 2F);
-                }
-                else {
+                    p.getWorld().playSound(p.getLocation(), j == 1 ? Sound.ITEM_ARMOR_EQUIP_DIAMOND : Sound.ITEM_ARMOR_EQUIP_TURTLE, 1F, j == 0 ? 1F : 2F);
+                } else {
                     p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ARROW_HIT_PLAYER, 1F, 1F);
                     outputInv.addItem(output);
                 }

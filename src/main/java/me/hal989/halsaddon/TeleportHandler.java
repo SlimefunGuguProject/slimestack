@@ -1,6 +1,6 @@
 package me.hal989.halsaddon;
 
-import me.mrCookieSlime.Slimefun.cscorelib2.chat.ChatColors;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.common.ChatColors;
 import org.bukkit.Location;
 import org.bukkit.entity.Enderman;
 import org.bukkit.entity.Endermite;
@@ -16,10 +16,11 @@ public class TeleportHandler implements Listener {
     public TeleportHandler(Plugin plugin) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
+
     @EventHandler
     public void onTeleport(EntityTeleportEvent e) {
-    	if(e.getEntity().getCustomName() == null) return;
-        if (e.getEntity().getCustomName().equals(ChatColors.color("&5Endermega"))){ //endermega abilities
+        if (e.getEntity().getCustomName() == null) return;
+        if (e.getEntity().getCustomName().equals(ChatColors.color("&5Endermega"))) { //endermega abilities
             Location loc = e.getEntity().getLocation();
             Endermite endermite = (Endermite) loc.getWorld().spawnEntity(loc, EntityType.ENDERMITE);
             endermite.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000, 4)); //endermite 1
@@ -31,7 +32,7 @@ public class TeleportHandler implements Listener {
             endermite.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 100, 1));
             e.getEntity().setFireTicks(0);
             Enderman enderman = (Enderman) e.getEntity();
-            enderman.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE,20,200)); //1 second of inviciblity
+            enderman.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20, 200)); //1 second of inviciblity
 
 
         }
