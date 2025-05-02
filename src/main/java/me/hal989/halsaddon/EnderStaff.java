@@ -6,7 +6,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -48,7 +48,7 @@ public class EnderStaff extends SlimefunItem {
             p.teleport(new Location(p.getWorld(), p.getLocation().getX() + xposition, p.getLocation().getY(), p.getLocation().getZ() + zposition, p.getLocation().getYaw(), p.getLocation().getPitch()));
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
         } else {
-            SlimefunPlugin.getLocalization().sendMessage(p, "messages.hungry", true); //hunger message
+            Slimefun.getLocalization().sendMessage(p, "messages.hungry", true); //hunger message
         }
     }
 }

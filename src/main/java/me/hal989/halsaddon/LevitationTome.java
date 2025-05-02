@@ -6,7 +6,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
@@ -41,7 +41,7 @@ public class LevitationTome extends SlimefunItem {
             p.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 100, 0)); //levitation effect
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_SHULKER_BULLET_HIT, 1, 1);
         } else {
-            SlimefunPlugin.getLocalization().sendMessage(p, "messages.hungry", true); //hunger message
+            Slimefun.getLocalization().sendMessage(p, "messages.hungry", true); //hunger message
         }
     }
 }
