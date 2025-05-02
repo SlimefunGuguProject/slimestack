@@ -42,19 +42,19 @@ public class HasteItem extends SlimefunItem {
 
             } else {
                 if (event.getItem() == endStonePickaxe) {
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&9Your &5 Endstone Pickaxe &9requires more ender lumps to repair itself!"));
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&9你的&5 末地石镐 &9需要更多末影结晶来修复自己"));
                 }
                 if (event.getItem() == endStoneAxe) {
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&9Your &5 Endstone Axe &9requires more ender lumps to repair itself!"));
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&9你的&5 末地石斧 &9需要更多末影结晶来修复自己"));
                 }
                 if (event.getItem() == endStoneShovel) {
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&9Your &5 Endstone Shovel &9requires more ender lumps to repair itself!"));
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&9你的&5 末地石锹 &9需要更多末影结晶来修复自己"));
                 }
                 if (event.getItem() == endStoneSword) {
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&9Your &5 Endstone Sword &9requires more ender lumps to repair itself!"));
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&9你的&5 末地石剑 &9需要更多末影结晶来修复自己"));
                 }
                 if (event.getItem() == endStoneHoe) {
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&9Your &5 Endstone Hoe &9requires more ender lumps to repair itself!"));
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&9你的&5 末地石锄 &9需要更多末影结晶来修复自己"));
                 }
 
 

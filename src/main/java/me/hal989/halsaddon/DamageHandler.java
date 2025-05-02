@@ -1,7 +1,5 @@
 package me.hal989.halsaddon;
 
-import io.github.thebusybiscuit.slimefun4.libraries.dough.common.ChatColors;
-import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
@@ -19,7 +17,13 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import static me.hal989.halsaddon.HALsAddon.*;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.common.ChatColors;
+import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
+import static me.hal989.halsaddon.HALsAddon.endermegaBoots;
+import static me.hal989.halsaddon.HALsAddon.endermegaChestplate;
+import static me.hal989.halsaddon.HALsAddon.endermegaHelmet;
+import static me.hal989.halsaddon.HALsAddon.endermegaLeggings;
+import static me.hal989.halsaddon.HALsAddon.isEndermegaEnraged;
 
 public class DamageHandler implements Listener {
     public DamageHandler(Plugin plugin) {
@@ -56,7 +60,7 @@ public class DamageHandler implements Listener {
 
         } else if (e.getEntityType().equals(EntityType.ENDERMAN)) {
             if (e.getEntity().getCustomName() == null) return;
-            if (e.getEntity().getCustomName().equals(ChatColors.color("&5Endermega"))) { //endermega abilities
+            if (e.getEntity().getCustomName().equals(ChatColors.color("&5末影巨兽"))) { //endermega abilities
 
                 Location loc = e.getEntity().getLocation();
                 Enderman enderman = (Enderman) e.getEntity();
@@ -91,7 +95,7 @@ public class DamageHandler implements Listener {
                         isEndermegaEnraged = true;
                         for (Entity n : enderman.getNearbyEntities(10.0, 10.0, 10.0)) {
                             if (n instanceof LivingEntity && (n instanceof Player)) {
-                                n.sendMessage(ChatColor.translateAlternateColorCodes('&', "&5Endermega &ehas become &4enraged!")); //alert everyone fighting it only once
+                                n.sendMessage(ChatColor.translateAlternateColorCodes('&', "&5末影巨兽 &e变得 &4更加狂暴了!")); //alert everyone fighting it only once
 
                             }
                         }

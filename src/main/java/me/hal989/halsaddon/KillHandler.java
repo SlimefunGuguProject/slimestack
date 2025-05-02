@@ -32,7 +32,7 @@ public class KillHandler implements Listener {
 
 
         }
-        if ((e.getEntityType() == EntityType.ENDERMAN) && (e.getEntity().getCustomName().equals(ChatColors.color("&5Endermega")))) {
+        if ((e.getEntityType() == EntityType.ENDERMAN) && (e.getEntity().getCustomName().equals(ChatColors.color("&5末影巨兽")))) {
             double RNG = Math.random();
             if (RNG < 0.25) {
                 e.getDrops().add(endermegaLeggings); //Drop a piece of the endermega set
