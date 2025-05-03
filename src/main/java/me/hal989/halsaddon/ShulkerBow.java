@@ -1,20 +1,20 @@
 package me.hal989.halsaddon;
 
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.core.handlers.BowShootHandler;
+import io.github.thebusybiscuit.slimefun4.implementation.items.weapons.SlimefunBow;
 import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import io.github.thebusybiscuit.slimefun4.core.handlers.BowShootHandler;
-import io.github.thebusybiscuit.slimefun4.implementation.items.weapons.SlimefunBow;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-
 public class ShulkerBow extends SlimefunBow {
-    public ShulkerBow(Category category, SlimefunItemStack item, ItemStack[] recipe) {
+    public ShulkerBow(ItemGroup category, SlimefunItemStack item, ItemStack[] recipe) {
         super(category, item, recipe);
     }
+
     @Override
     public BowShootHandler onShoot() {
         return (e, n) -> {

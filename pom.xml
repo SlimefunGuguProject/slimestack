@@ -46,33 +46,16 @@
   
   <dependencies>
   	<dependency>
-  		<groupId>org.bukkit</groupId>
-  		<artifactId>bukkit</artifactId>
-  		<version>1.15.2-R0.1-SNAPSHOT</version>
+  		<groupId>org.spigotmc</groupId>
+  		<artifactId>spigot-api</artifactId>
+  		<version>1.20.1-R0.1-SNAPSHOT</version>
   		<scope>provided</scope>
   	</dependency>
   	
   	<dependency>
-  		<groupId>com.github.TheBusyBiscuit</groupId>
-  		<artifactId>CS-CoreLib</artifactId>
-  		<version>8081bb4fe4</version>
-  		<scope>provided</scope>
-  		<exclusions>
-  			<exclusion>
-  				<groupId>io.github.thebusybiscuit</groupId>
-  				<artifactId>cscorelib2</artifactId>
-  			</exclusion>
-  			<exclusion>
-  				<groupId>org.bstats</groupId>
-  				<artifactId>bstats-bukkit</artifactId>
-  			</exclusion>
-  		</exclusions>
-  	</dependency>
-  	
-  	<dependency>
-  		<groupId>com.github.TheBusyBiscuit</groupId>
+  		<groupId>com.github.SlimefunGuguProject</groupId>
   		<artifactId>Slimefun4</artifactId>
-  		<version>RC-21</version>
+  		<version>38953fe13a</version>
   		<scope>provided</scope>
   		<exclusions>
   			<exclusion>
