@@ -63,26 +63,26 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
         SlimefunItemStack FrozenBar_2 = new SlimefunItemStack("FROZEN_BAR_2", Material.IRON_INGOT, "&5冰冻锭 &d(66%)");
         SlimefunItemStack FrozenBar_Full = new SlimefunItemStack("FROZEN_BAR_FULL", Material.IRON_INGOT, "&5冰冻锭");
         SlimefunItemStack Blistering_Blade = new SlimefunItemStack("BLISTERING_BLADE", Material.GOLDEN_SWORD, "&6灼烧之刃", "", LoreBuilder.radioactive(Radioactivity.VERY_DEADLY), LoreBuilder.HAZMAT_SUIT_REQUIRED);
-        Blistering_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 10);
+        Blistering_Blade.addUnsafeEnchantment(Enchantment.SHARPNESS, 10);
         Blistering_Blade.addUnsafeEnchantment(Enchantment.FIRE_ASPECT, 4);
         Blistering_Blade.addUnsafeEnchantment(Enchantment.SWEEPING_EDGE, 3);
-        Blistering_Blade.addUnsafeEnchantment(Enchantment.DURABILITY, 10); // 灼烧之刃
+        Blistering_Blade.addUnsafeEnchantment(Enchantment.UNBREAKING, 10); // 灼烧之刃
         SlimefunItemStack Freezing_Blade = new SlimefunItemStack("FREEZING_BLADE", Material.DIAMOND_SWORD, "&b冰冻之刃");
-        Freezing_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 4);
-        Freezing_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ARTHROPODS, 3);
-        Freezing_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_UNDEAD, 3);
-        Freezing_Blade.addUnsafeEnchantment(Enchantment.DURABILITY, 5); // 冰冻之刃
+        Freezing_Blade.addUnsafeEnchantment(Enchantment.SHARPNESS, 4);
+        Freezing_Blade.addUnsafeEnchantment(Enchantment.BANE_OF_ARTHROPODS, 3);
+        Freezing_Blade.addUnsafeEnchantment(Enchantment.SMITE, 3);
+        Freezing_Blade.addUnsafeEnchantment(Enchantment.UNBREAKING, 5); // 冰冻之刃
         SlimefunItemStack Equal_Blade = new SlimefunItemStack("EQUILIBRIUM", Material.IRON_SWORD, "&9平衡之刃", "", "&f很少有人能获得这把剑，且几乎没人有能力挥舞它。", "", LoreBuilder.radioactive(Radioactivity.VERY_DEADLY), LoreBuilder.HAZMAT_SUIT_REQUIRED);
-        Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 8);
-        Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_ARTHROPODS, 3);
-        Equal_Blade.addUnsafeEnchantment(Enchantment.DAMAGE_UNDEAD, 3);
+        Equal_Blade.addUnsafeEnchantment(Enchantment.SHARPNESS, 8);
+        Equal_Blade.addUnsafeEnchantment(Enchantment.BANE_OF_ARTHROPODS, 3);
+        Equal_Blade.addUnsafeEnchantment(Enchantment.SMITE, 3);
         Equal_Blade.addUnsafeEnchantment(Enchantment.FIRE_ASPECT, 4);
         Equal_Blade.addUnsafeEnchantment(Enchantment.SWEEPING_EDGE, 3);
-        Equal_Blade.addUnsafeEnchantment(Enchantment.DURABILITY, 10); // 平衡之刃
+        Equal_Blade.addUnsafeEnchantment(Enchantment.UNBREAKING, 10); // 平衡之刃
         Levitation_Tome = new SlimefunItemStack("LEVITATION_TOME", Material.ENCHANTED_BOOK, "&f法术书 (&b反重力&f)", "", "&e右键 &f- 获得短暂的悬浮效果");
         SlimefunItemStack Ground_Tome = new SlimefunItemStack("GROUND_TOME", Material.ENCHANTED_BOOK, "&f法术书 (&8重力强化&f)", "", "&e右键 &f- 强化附近所有实体的重力");
         SlimefunItemStack Obsidian_Shield = new SlimefunItemStack("OBSIDIAN_SHIELD", Material.SHIELD, "&f黑曜石盾牌");
-        Obsidian_Shield.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
+        Obsidian_Shield.addUnsafeEnchantment(Enchantment.UNBREAKING, 5);
     
         endStonePickaxe = new SlimefunItemStack("ENDSTONE_PICKAXE", Material.GOLDEN_PICKAXE, "&f末地石镐", "", "&eShift右键 &f- 消耗一个末影结晶", "&f以恢复镐的2点耐久。");
         endStoneShovel = new SlimefunItemStack("ENDSTONE_SHOVEL", Material.GOLDEN_SHOVEL, "&f末地石锹", "", "&eShift右键 &f- 消耗一个末影结晶", "&f以恢复锹的2点耐久。");
@@ -93,27 +93,27 @@ public class HALsAddon extends JavaPlugin implements SlimefunAddon {
     
         // 末影巨兽掉落物
         endermegaHelmet = new SlimefunItemStack("ENDERMEGA_HELMET", Material.LEATHER_HELMET, Color.BLACK, "&5末影巨兽头盔", "", "&5末影巨兽&d的力量流淌于这套装备之中...", "", "&b套装效果：受到攻击时传送");
-        endermegaHelmet.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 5);
-        endermegaHelmet.addUnsafeEnchantment(Enchantment.PROTECTION_PROJECTILE, 2);
-        endermegaHelmet.addUnsafeEnchantment(Enchantment.DURABILITY, 8);
+        endermegaHelmet.addUnsafeEnchantment(Enchantment.PROTECTION, 5);
+        endermegaHelmet.addUnsafeEnchantment(Enchantment.PROJECTILE_PROTECTION, 2);
+        endermegaHelmet.addUnsafeEnchantment(Enchantment.UNBREAKING, 8);
         endermegaChestplate = new SlimefunItemStack("ENDERMEGA_CHESTPLATE", Material.LEATHER_CHESTPLATE, Color.BLACK, "&5末影巨兽胸甲", "", "&5末影巨兽&d的力量流淌于这套装备之中...", "", "&b套装效果：受到攻击时传送");
-        endermegaChestplate.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 5);
-        endermegaChestplate.addUnsafeEnchantment(Enchantment.PROTECTION_PROJECTILE, 2);
-        endermegaChestplate.addUnsafeEnchantment(Enchantment.DURABILITY, 8);
+        endermegaChestplate.addUnsafeEnchantment(Enchantment.PROTECTION, 5);
+        endermegaChestplate.addUnsafeEnchantment(Enchantment.PROJECTILE_PROTECTION, 2);
+        endermegaChestplate.addUnsafeEnchantment(Enchantment.UNBREAKING, 8);
         endermegaLeggings = new SlimefunItemStack("ENDERMEGA_LEGGINGS", Material.LEATHER_LEGGINGS, Color.BLACK, "&5末影巨兽护腿", "", "&5末影巨兽&d的力量流淌于这套装备之中...", "", "&b套装效果：受到攻击时传送");
-        endermegaLeggings.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 5);
-        endermegaLeggings.addUnsafeEnchantment(Enchantment.PROTECTION_PROJECTILE, 2);
-        endermegaLeggings.addUnsafeEnchantment(Enchantment.DURABILITY, 8);
+        endermegaLeggings.addUnsafeEnchantment(Enchantment.PROTECTION, 5);
+        endermegaLeggings.addUnsafeEnchantment(Enchantment.PROJECTILE_PROTECTION, 2);
+        endermegaLeggings.addUnsafeEnchantment(Enchantment.UNBREAKING, 8);
         endermegaBoots = new SlimefunItemStack("ENDERMEGA_BOOTS", Material.LEATHER_BOOTS, Color.BLACK, "&5末影巨兽靴子", "", "&5末影巨兽&d的力量流淌于这套装备之中...", "", "&b套装效果：受到攻击时传送");
-        endermegaBoots.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 5);
-        endermegaBoots.addUnsafeEnchantment(Enchantment.PROTECTION_PROJECTILE, 2);
-        endermegaBoots.addUnsafeEnchantment(Enchantment.DURABILITY, 8);
+        endermegaBoots.addUnsafeEnchantment(Enchantment.PROTECTION, 5);
+        endermegaBoots.addUnsafeEnchantment(Enchantment.PROJECTILE_PROTECTION, 2);
+        endermegaBoots.addUnsafeEnchantment(Enchantment.UNBREAKING, 8);
     
         enderstaffTier2 = new SlimefunItemStack("ENDER_STAFF_2", Material.BLAZE_ROD, "&6元素法杖 - &5&o末影 &0(&a精通&0)", "", "&7元素：&5&o末影", "", "&e右键 &7传送", "&a精通 - 范围翻倍");
         enderstaffTier2.addUnsafeEnchantment(Enchantment.CHANNELING, 1);
         enderBlade = new SlimefunItemStack("ENDER_BLADE", Material.IRON_SWORD, "&5末影剑", "", "&eShift右键 &f- 消耗一些耐久", "&f将你传送到3格高的空中。");
         irregularbow = new SlimefunItemStack("IRREGULAR_BOW", Material.BOW, "&1反规则弓");
-        irregularbow.addUnsafeEnchantment(Enchantment.ARROW_KNOCKBACK, 4);
+        irregularbow.addUnsafeEnchantment(Enchantment.PUNCH, 4);
     
         endermegaHead = new SlimefunItemStack("ENDERMEGA_HEAD", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmJjZjNmNTc4NzE5NmQyNTZjMTA0ZmZmYWU4ZTUyNjUyNDIyMjJlMjEzOGE1N2ExNjY2YzE1YjVmNmM4N2I5OCJ9fX0=", "&e末影巨兽头颅", "&7纯粹用于装饰。");
         // 多方块结构

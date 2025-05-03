@@ -41,9 +41,9 @@ public class BossEgg extends SlimefunItem {
             Enderman enderman = (Enderman) loc.getWorld().spawnEntity(loc, EntityType.ENDERMAN);
             enderman.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST, 10000, 25)); //Applying buffs to the endermega
             enderman.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000, 2));
-            enderman.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 10000, 2));
+            enderman.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, 10000, 2));
             enderman.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 10000, 1));
-            enderman.addPotionEffect(new PotionEffect(PotionEffectType.HEAL, 20, 200));
+            enderman.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 20, 200));
             enderman.setCustomName(ChatColors.color("&5末影巨兽"));
             if (p.getGameMode() != GameMode.CREATIVE) {
                 ItemUtils.consumeItem(event.getItem(), false);

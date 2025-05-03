@@ -6,8 +6,8 @@
   <version>12</version>
   
   <properties>
-  	<maven.compiler.source>1.8</maven.compiler.source>
-  	<maven.compiler.target>1.8</maven.compiler.target>
+  	<maven.compiler.source>21</maven.compiler.source>
+  	<maven.compiler.target>21</maven.compiler.target>
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
@@ -29,7 +29,7 @@
   </repositories>
   
   <build>
-  	<finalName>${project.name} v${project.version}</finalName>
+  	<finalName>[sf]${project.name} v${project.version}</finalName>
   	<defaultGoal>clean package</defaultGoal>
   	<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
   	
@@ -48,14 +48,14 @@
   	<dependency>
   		<groupId>org.spigotmc</groupId>
   		<artifactId>spigot-api</artifactId>
-  		<version>1.20.1-R0.1-SNAPSHOT</version>
+  		<version>1.21.1-R0.1-SNAPSHOT</version>
   		<scope>provided</scope>
   	</dependency>
   	
   	<dependency>
   		<groupId>com.github.SlimefunGuguProject</groupId>
   		<artifactId>Slimefun4</artifactId>
-  		<version>38953fe13a</version>
+  		<version>2025.1</version>
   		<scope>provided</scope>
   		<exclusions>
   			<exclusion>
